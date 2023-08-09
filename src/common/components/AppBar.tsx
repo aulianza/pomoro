@@ -16,20 +16,22 @@ interface MenuProps {
   path: string;
 }
 
+const iconSize: number = 18;
+
 const MENU: MenuProps[] = [
   {
     name: 'Home',
-    icon: <HomeIcon size={22} />,
+    icon: <HomeIcon size={iconSize} />,
     path: '/',
   },
   {
     name: 'Timer',
-    icon: <TimerIcon size={22} />,
+    icon: <TimerIcon size={iconSize} />,
     path: '/timer',
   },
   {
     name: 'Report',
-    icon: <ReportIcon size={22} />,
+    icon: <ReportIcon size={iconSize} />,
     path: '/report',
   },
 ];
@@ -44,7 +46,7 @@ const AppBar = () => {
           <Link href={menu?.path} key={menu?.name}>
             <button
               className={clsx(
-                'py-2 px-4 flex items-center cursor-pointer gap-1 rounded-full text-neutral-600',
+                'py-2 px-4 flex items-center cursor-pointer gap-1 rounded-full text-neutral-600 ',
                 'hover:bg-neutral-200 hover:text-neutral-700',
                 {
                   'bg-neutral-300 text-neutral-800': pathname === menu?.path,
@@ -52,7 +54,7 @@ const AppBar = () => {
               )}
             >
               <div>{menu?.icon}</div>
-              <div>{menu?.name}</div>
+              <div className='text-sm font-medium'>{menu?.name}</div>
             </button>
           </Link>
         ))}
