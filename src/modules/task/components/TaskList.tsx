@@ -1,5 +1,5 @@
 const TaskList = () => {
-  return <div>TaskList</div>;
+  return <div className='p-6'>TaskList</div>;
 };
 
 export default TaskList;
