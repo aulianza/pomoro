@@ -38,14 +38,13 @@ const AppBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className='shadow-md fixed bottom-0 w-full py-4 px-5 max-w-[480px] mx-auto bg-neutral-100'>
+    <div className='shadow-md fixed bottom-0 w-full py-3 px-5 max-w-[480px] mx-auto bg-neutral-100'>
       <div className='flex gap-1 justify-evenly'>
         {MENU.map((menu) => (
           <Link href={menu?.path} key={menu?.name}>
-            <div
+            <button
               className={clsx(
                 'py-2 px-4 flex items-center cursor-pointer gap-1 rounded-full text-neutral-600',
-                'transition-all duration-300',
                 'hover:bg-neutral-200 hover:text-neutral-700',
                 {
                   'bg-neutral-300 text-neutral-800': pathname === menu?.path,
@@ -54,7 +53,7 @@ const AppBar = () => {
             >
               <div>{menu?.icon}</div>
               <div>{menu?.name}</div>
-            </div>
+            </button>
           </Link>
         ))}
       </div>
