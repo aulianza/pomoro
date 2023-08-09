@@ -47,9 +47,10 @@ const AppBar = () => {
             <button
               className={clsx(
                 'py-2 px-4 flex items-center cursor-pointer gap-1 rounded-full text-neutral-600 ',
-                'hover:bg-neutral-200 hover:text-neutral-700',
+                'hover:text-neutral-700',
+                'transition-all duration-300',
                 {
-                  'bg-neutral-300 text-neutral-800': pathname === menu?.path,
+                  'bg-neutral-200 text-neutral-800': pathname === menu?.path,
                 },
               )}
             >
