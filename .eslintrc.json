@@ -40,9 +40,8 @@
         "groups": [
           ["^@?\\w", "^\\u0000"],
           ["^.+\\.s?css$"],
-          ["^@/libs", "^@/hooks"],
-          ["^@/data"],
-          ["^@/components", "^@/container"],
+          ["^@/common", "^@/modules"],
+          ["^@/libs", "^@/hooks", "^@/services"],
           ["^@/store"],
           ["^@/"],
           [

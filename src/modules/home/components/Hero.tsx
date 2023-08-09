@@ -1,6 +1,7 @@
+import Link from 'next/link';
+import { BsSun as SunIcon } from 'react-icons/bs';
 import { HiOutlineLocationMarker as LocationIcon } from 'react-icons/hi';
-import { BiBell as NotificationIcon } from 'react-icons/bi';
-import { BsCloudSun as CloudyIcon, BsSun as SunIcon } from 'react-icons/bs';
+import { LuSettings as SettingsIcon } from 'react-icons/lu';
 
 const Hero = () => {
   return (
@@ -11,9 +12,11 @@ const Hero = () => {
           <span>Jakarta, Indonesia</span>
         </div>
         <div className='flex items-center gap-3'>
-          <div className='border border-neutral-600 p-2 rounded-full cursor-pointer hover:border-neutral-500'>
-            <NotificationIcon size={22} />
-          </div>
+          <Link href='/settings'>
+            <div className='border border-neutral-600 p-2 rounded-full cursor-pointer text-neutral-300 hover:border-neutral-500 hover:text-neutral-50'>
+              <SettingsIcon size={22} />
+            </div>
+          </Link>
         </div>
       </div>
       <div className='space-y-2'>

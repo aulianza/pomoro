@@ -1,11 +1,12 @@
+import Wrapper from '@/common/components/Wrapper';
 import Home from '@/modules/home';
 import TaskList from '@/modules/task';
 
-export default function Page() {
+export default function HomePage() {
   return (
-    <main className='flex flex-col'>
+    <Wrapper>
       <Home />
       <TaskList />
-    </main>
+    </Wrapper>
   );
 }
