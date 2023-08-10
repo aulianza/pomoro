@@ -24,11 +24,15 @@ const BottomSheet = ({
   const ref = useRef<SheetRef>(null);
   const isKeyboardOpen = useDetectKeyboardOpen();
 
+  const isIOSDevice =
+    typeof navigator !== 'undefined' &&
+    /(iPhone|iPad)/i.test(navigator.userAgent);
+
   const keyboardHeight =
-    (isKeyboardOpen &&
-      window.visualViewport &&
-      window.innerHeight - window.visualViewport.height + 'px') ||
-    0;
+    isIOSDevice &&
+    isKeyboardOpen &&
+    window.visualViewport &&
+    window.innerHeight - window.visualViewport.height + 'px';
 
   return (
     <StyledSheet
