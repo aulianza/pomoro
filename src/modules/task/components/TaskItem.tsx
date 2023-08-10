@@ -51,7 +51,9 @@ const TaskItem = ({
         <div className='flex items-center justify-between'>
           <div className='w-11/12 flex items-center gap-4'>
             <Checkbox checked={isCompleted} onChange={handleCompleteChange} />
-            <div className={clsx(isCompleted && 'line-through')}>{title}</div>
+            <div className={clsx('text-[15px]', isCompleted && 'line-through')}>
+              {title}
+            </div>
           </div>
           <MoreIcon
             onClick={() => setOpen(true)}

@@ -82,7 +82,7 @@ const AddEditTask = ({
             <input
               type='text'
               placeholder='Input task title...'
-              className='border dark:border-neutral-600 p-3 rounded-xl shadow-sm'
+              className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
               {...formik.getFieldProps('title')}
             />
 
@@ -101,7 +101,7 @@ const AddEditTask = ({
             </label>
             <textarea
               placeholder='Input task notes...'
-              className='border dark:border-neutral-600 p-3 rounded-xl shadow-sm'
+              className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
               {...formik.getFieldProps('notes')}
             />
           </div>
