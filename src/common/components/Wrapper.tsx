@@ -10,7 +10,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <ThemeProvider attribute='class' defaultTheme='dark'>
+    <ThemeProvider attribute='class'>
       <main>
         {children}
         {pathname !== '/settings' && pathname !== '/timer' && <AppBar />}
