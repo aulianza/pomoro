@@ -50,7 +50,7 @@ const BottomSheet = ({
         }}
       >
         <Sheet.Header>
-          <StyledSheetHeader className='dark:border-b dark:border-b-neutral-700 dark:bg-neutral-800'>
+          <StyledSheetHeader className='dark:border-b dark:border-b-neutral-700 dark:bg-neutral-900'>
             <div className='font-semibold'>{title}</div>
             <CloseIcon
               size={22}
@@ -62,7 +62,7 @@ const BottomSheet = ({
             />
           </StyledSheetHeader>
         </Sheet.Header>
-        <Sheet.Content className='dark:bg-neutral-800'>
+        <Sheet.Content className='dark:bg-neutral-900'>
           {children}
         </Sheet.Content>
       </Sheet.Container>
