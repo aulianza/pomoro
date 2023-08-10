@@ -49,13 +49,13 @@ const TaskItem = ({
     <>
       <div className='border p-5 rounded-xl shadow-sm bg-white dark:bg-neutral-900 dark:border-neutral-700'>
         <div className='flex items-center justify-between'>
-          <div className='w-fit flex items-center gap-4'>
+          <div className='w-11/12 flex items-center gap-4'>
             <Checkbox checked={isCompleted} onChange={handleCompleteChange} />
             <div className={clsx(isCompleted && 'line-through')}>{title}</div>
           </div>
           <MoreIcon
             onClick={() => setOpen(true)}
-            className='w-max cursor-pointer'
+            className='w-1/12 cursor-pointer'
             size={20}
           />
         </div>

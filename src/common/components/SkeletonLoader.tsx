@@ -10,6 +10,7 @@ type SkeletonLoaderProps = {
 
 const SkeletonLoader = ({ children }: SkeletonLoaderProps) => {
   const { resolvedTheme } = useTheme();
+
   const baseColor = resolvedTheme === 'dark' ? '#202020' : '#ebebeb';
   const highlightColor = resolvedTheme === 'dark' ? '#2e2e2e' : '#f5f5f5';
 

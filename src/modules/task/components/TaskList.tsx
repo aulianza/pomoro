@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { MdAdd as AddTaskIcon } from 'react-icons/md';
-import Skeleton from 'react-loading-skeleton';
 
 import BottomSheet from '@/common/components/BottomSheet';
-import SkeletonLoader from '@/common/components/SkeletonLoader';
 import { useTaskStore } from '@/common/store/task';
 
 import AddEditTask from './AddEditTask';
@@ -18,15 +16,11 @@ const TaskList = () => {
   const [isMounted, setMounted] = useState(false);
 
   const renderLoading = () => {
-    return Array.from({ length: 3 }).map((_, index) => (
-      <SkeletonLoader key={index}>
-        <Skeleton
-          height={66}
-          containerClassName='flex'
-          className='!rounded-xl'
-        />
-      </SkeletonLoader>
-    ));
+    return (
+      <div className='mx-auto py-10 text-neutral-400 dark:text-neutral-600'>
+        Loading...
+      </div>
+    );
   };
 
   useEffect(() => {
