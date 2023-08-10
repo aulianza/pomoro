@@ -9,7 +9,7 @@ const Hero = () => {
     <div className='pt-6 pb-8 px-6 space-y-6 h-auto bg-white dark:bg-neutral-900'>
       <div className='flex justify-between items-center'>
         <div>
-          <div className='flex gap-2 items-center text-neutral-600 dark:text-neutral-300'>
+          <div className='flex gap-2 items-center text-neutral-600 dark:text-neutral-400'>
             <SunIcon size={18} />
             <span>Good Morning, Ryan</span>
           </div>

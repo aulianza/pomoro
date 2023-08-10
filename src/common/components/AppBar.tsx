@@ -49,7 +49,7 @@ const AppBar = () => {
                 'py-2 px-4 flex items-center cursor-pointer gap-1 rounded-full dark:text-neutral-400',
                 'hover:text-neutral-700 dark:hover:text-neutral-300',
                 {
-                  'bg-neutral-200 dark:bg-neutral-600 text-neutral-800 dark:text-neutral-200':
+                  'bg-neutral-200 dark:bg-neutral-600 text-neutral-800 dark:text-neutral-50':
                     pathname === menu?.path,
                 },
               )}
