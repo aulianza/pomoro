@@ -29,7 +29,7 @@ const Quotes = () => {
           <QuoteIcon size={18} />
         </div>
         <div>
-          <div className='text-neutral-700 dark:text-neutral-200 text-sm'>
+          <div className='text-neutral-700 dark:text-neutral-200 text-[15px]'>
             {loading ? (
               <span className='text-neutral-600 dark:text-neutral-400'>
                 Preparing inspiration...
