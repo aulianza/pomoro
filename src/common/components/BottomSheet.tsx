@@ -60,12 +60,12 @@ const StyledSheet = styled(Sheet)`
 `;
 
 const StyledSheetHeader = styled.div`
-  border-top-right-radius: 1rem !important;
-  border-top-left-radius: 1rem !important;
-  background: #fff;
+  border-top-right-radius: 0.9rem !important;
+  border-top-left-radius: 0.9rem !important;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem 1.8rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
 `;

@@ -41,7 +41,7 @@ const TaskItem = ({
   };
 
   return (
-    <div className='border p-5 rounded-xl shadow-sm bg-white dark:bg-neutral-800 dark:border-neutral-700'>
+    <div className='border p-5 rounded-xl shadow-sm bg-white dark:bg-neutral-900 dark:border-neutral-700'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-3'>
           <Checkbox checked={isCompleted} onChange={handleCompleteChange} />
