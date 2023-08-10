@@ -25,8 +25,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "react-loading-skeleton": "^3.3.1",
     "react-modal-sheet": "^2.0.0",
     "use-detect-keyboard-open": "^0.4.0",
+    "uuid": "^9.0.0",
     "yup": "^1.2.0",
     "zustand": "^4.4.1"
   },
@@ -36,6 +38,7 @@
     "@types/node": "20.4.9",
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "autoprefixer": "10.4.14",
     "eslint": "8.46.0",

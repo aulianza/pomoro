@@ -1,19 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdAdd as AddTaskIcon } from 'react-icons/md';
+import Skeleton from 'react-loading-skeleton';
 
 import BottomSheet from '@/common/components/BottomSheet';
+import SkeletonLoader from '@/common/components/SkeletonLoader';
 import { useTaskStore } from '@/common/store/task';
 
-import AddTask from './AddTask';
+import AddEditTask from './AddEditTask';
 import TaskItem from './TaskItem';
 
 const TaskList = () => {
   const { tasks } = useTaskStore();
-  // console.log('🚀 aulianza ~ TaskList ~ tasks => ', tasks);
 
   const [isOpen, setOpen] = useState(false);
+  const [isMounted, setMounted] = useState(false);
+
+  const renderLoading = () => {
+    return Array.from({ length: 3 }).map((_, index) => (
+      <SkeletonLoader key={index}>
+        <Skeleton
+          height={66}
+          containerClassName='flex'
+          className='!rounded-xl'
+        />
+      </SkeletonLoader>
+    ));
+  };
+
+  useEffect(() => {
+    setMounted(true);
+  }, [tasks]);
 
   return (
     <div className='p-6 space-y-5'>
@@ -30,11 +48,13 @@ const TaskList = () => {
         </button>
       </div>
       <div className='flex flex-col gap-2'>
-        {tasks?.map((task) => <TaskItem key={task?.id} {...task} />)}
+        {isMounted
+          ? tasks?.map((task) => <TaskItem key={task?.id} {...task} />)
+          : renderLoading()}
       </div>
 
       <BottomSheet title='Add New Task' isOpen={isOpen} onClose={setOpen}>
-        <AddTask onSave={() => setOpen(false)} />
+        <AddEditTask action='add' onSave={() => setOpen(false)} />
       </BottomSheet>
     </div>
   );
