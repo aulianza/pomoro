@@ -40,7 +40,7 @@ const AppBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className='shadow-md fixed bottom-0 w-full py-3 px-5 max-w-[480px] mx-auto bg-neutral-100'>
+    <div className='shadow-md fixed bottom-0 w-full py-3 px-5 max-w-[480px] mx-auto bg-neutral-100 border-t'>
       <div className='flex gap-1 justify-evenly'>
         {MENU.map((menu) => (
           <Link href={menu?.path} key={menu?.name}>

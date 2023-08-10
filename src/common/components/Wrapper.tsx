@@ -11,7 +11,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <main>
       {children}
-      {pathname !== 'settings' && <AppBar />}
+      {pathname !== '/settings' && pathname !== '/timer' && <AppBar />}
     </main>
   );
 };

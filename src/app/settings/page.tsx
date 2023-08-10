@@ -1,3 +1,5 @@
+import Wrapper from '@/common/components/Wrapper';
+
 export default function SettingsPage() {
-  return <main className='flex flex-col'>settings here</main>;
+  return <Wrapper>settings here</Wrapper>;
 }

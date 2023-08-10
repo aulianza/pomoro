@@ -18,8 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={clsx('md:bg-neutral-50', sora.className)}>
-        <div className='max-w-[480px] mx-auto bg-white md:shadow-sm md:h-screen'>
+      <body
+        suppressHydrationWarning={true}
+        className={clsx('md:bg-neutral-50', sora.className)}
+      >
+        <div className='max-w-[480px] mx-auto bg-neutral-50 md:shadow-md h-screen'>
           {children}
         </div>
       </body>

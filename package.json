@@ -14,11 +14,19 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "formik": "^2.4.3",
+    "framer-motion": "^10.15.1",
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.10.1"
+    "react-icons": "^4.10.1",
+    "react-modal-sheet": "^2.0.0",
+    "yup": "^1.2.0",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.0",
