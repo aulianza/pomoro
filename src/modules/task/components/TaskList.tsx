@@ -29,7 +29,7 @@ const TaskList = () => {
   }, [tasks]);
 
   return (
-    <div className='p-6 space-y-5'>
+    <div className='pt-6 px-6 pb-28 space-y-5'>
       <div className='flex justify-between items-center'>
         <h2 className='font-medium text-lg text-neutral-700 dark:text-neutral-300'>
           Today's Task

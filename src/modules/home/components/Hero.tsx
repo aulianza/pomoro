@@ -10,11 +10,16 @@ const Hero = () => {
   const timeOfDay = getTimeOfDay();
   const currentDate = getFormattedDate();
 
+  const userName = 'Ryan';
+  const greetings = userName
+    ? `${timeOfDay}, ${userName}!`
+    : `Hi,  ${timeOfDay}!`;
+
   return (
     <div className='pt-6 pb-8 px-6 space-y-6 h-auto bg-white dark:bg-neutral-900'>
       <div className='flex justify-between items-center'>
         <div className='flex flex-col'>
-          <span>{timeOfDay}, Ryan</span>
+          <span>{greetings}</span>
           <span className='block text-sm font-normal text-neutral-500'>
             {currentDate}
           </span>
