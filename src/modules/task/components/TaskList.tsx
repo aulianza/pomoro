@@ -21,17 +21,17 @@ const TaskList = () => {
         <h2 className='font-medium text-lg'>Today's Task</h2>
         <button
           onClick={() => setOpen(true)}
-          className='py-2 px-3 rounded-full bg-neutral-200 flex items-center gap-1 hover:shadow-sm'
+          className='py-2 px-3 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center gap-1 hover:shadow-sm'
         >
           <AddTaskIcon size={18} />
-          <span className='text-sm'>Add New Task</span>
+          <span className='text-sm'>New Task</span>
         </button>
       </div>
       <div className='flex flex-col gap-3'>
         {tasks?.map((task) => <TaskItem key={task?.id} {...task} />)}
       </div>
 
-      <BottomSheet isOpen={isOpen} onClose={setOpen}>
+      <BottomSheet title='Add New Task' isOpen={isOpen} onClose={setOpen}>
         <AddTask onSave={() => setOpen(false)} />
       </BottomSheet>
     </div>

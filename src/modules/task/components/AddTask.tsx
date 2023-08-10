@@ -40,14 +40,13 @@ const AddTask = ({ onSave }: AddTaskProps) => {
   });
 
   return (
-    <div className='px-6 pb-6 space-y-6'>
-      <h2 className='font-medium text-lg'>New Task</h2>
+    <div className='p-6 space-y-6'>
       <form onSubmit={formik.handleSubmit}>
         <div className='flex flex-col gap-3 mb-6'>
           <input
             type='text'
             placeholder='Title'
-            className='border p-3 rounded-xl shadow-sm'
+            className='border dark:border-neutral-600 p-3 rounded-xl shadow-sm'
             {...formik.getFieldProps('title')}
           />
           {formik.touched.title && formik.errors.title ? (
@@ -55,13 +54,13 @@ const AddTask = ({ onSave }: AddTaskProps) => {
           ) : null}
           <textarea
             placeholder='Description'
-            className='border p-3 rounded-xl shadow-sm'
+            className='border dark:border-neutral-600 p-3 rounded-xl shadow-sm'
             {...formik.getFieldProps('description')}
           />
         </div>
         <button
           type='submit'
-          className='py-3 px-4 bg-neutral-200 rounded-full w-full'
+          className='py-3 px-4 bg-neutral-200 dark:bg-neutral-600 rounded-full w-full'
         >
           Add Task
         </button>
