@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { LuSettings as SettingsIcon } from 'react-icons/lu';
 
 import ThemeToggle from '@/common/components/ThemeToggle';
-import { getTimeOfDay } from '@/common/helpers';
+import { getFormattedDate, getTimeOfDay } from '@/common/helpers';
 
 import Quotes from './Quotes';
 
 const Hero = () => {
   const timeOfDay = getTimeOfDay();
+  const currentDate = getFormattedDate();
 
   return (
     <div className='pt-6 pb-8 px-6 space-y-6 h-auto bg-white dark:bg-neutral-900'>
@@ -15,11 +16,7 @@ const Hero = () => {
         <div className='flex flex-col'>
           <span>{timeOfDay}, Ryan</span>
           <span className='block text-sm font-normal text-neutral-500'>
-            {new Date().toLocaleDateString('en-US', {
-              weekday: 'long',
-              month: 'long',
-              day: 'numeric',
-            })}
+            {currentDate}
           </span>
         </div>
         <div className='flex items-center gap-3'>

@@ -18,6 +18,7 @@
     "@emotion/styled": "^11.11.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
     "formik": "^2.4.3",
     "framer-motion": "^10.15.1",
     "next": "13.4.13",
