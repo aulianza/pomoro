@@ -16,11 +16,12 @@ const TaskList = () => {
   const [isMounted, setMounted] = useState(false);
 
   const renderLoading = () => {
-    return (
-      <div className='mx-auto py-10 text-neutral-400 dark:text-neutral-600'>
-        Loading...
-      </div>
-    );
+    return null;
+    // return (
+    //   <div className='mx-auto py-10 text-neutral-400 dark:text-neutral-600'>
+    //     Loading...
+    //   </div>
+    // );
   };
 
   useEffect(() => {
