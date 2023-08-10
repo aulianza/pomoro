@@ -41,6 +41,9 @@ dependencies:
   react-modal-sheet:
     specifier: ^2.0.0
     version: 2.0.0(framer-motion@10.15.1)(react@18.2.0)
+  use-detect-keyboard-open:
+    specifier: ^0.4.0
+    version: 0.4.0
   yup:
     specifier: ^1.2.0
     version: 1.2.0
@@ -4182,6 +4185,10 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
+
+  /use-detect-keyboard-open@0.4.0:
+    resolution: {integrity: sha512-g26dzEDF9qh1VSwYT7ILOdzS0v9xPo5IF3R804HksW+NAOiNd2P2KYrmTfd/5ApfYixlrX2P7+PlsEgAx/lZ6w==}
+    dev: false
 
   /use-sync-external-store@1.2.0(react@18.2.0):
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}

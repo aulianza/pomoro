@@ -15,7 +15,7 @@ const AddTask = ({ onSave }: AddTaskProps) => {
   const initialValues: TaskProps = {
     id: Math.floor(Math.random() * 1000) + 1,
     title: '',
-    description: '',
+    notes: '',
     is_completed: false,
     created_at: new Date(),
   };
@@ -50,13 +50,15 @@ const AddTask = ({ onSave }: AddTaskProps) => {
             {...formik.getFieldProps('title')}
           />
           {formik.touched.title && formik.errors.title ? (
-            <div className='text-red-500'>{formik.errors.title}</div>
+            <div className='text-red-400 text-sm ml-1'>
+              {formik.errors.title}
+            </div>
           ) : null}
-          <textarea
+          {/* <textarea
             placeholder='Description'
             className='border dark:border-neutral-600 p-3 rounded-xl shadow-sm'
             {...formik.getFieldProps('description')}
-          />
+          /> */}
         </div>
         <button
           type='submit'

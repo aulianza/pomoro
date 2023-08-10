@@ -1,12 +1,16 @@
+'use client';
+
 import styled from '@emotion/styled';
-import { MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode, useRef } from 'react';
 import { IoMdClose as CloseIcon } from 'react-icons/io';
-import Sheet from 'react-modal-sheet';
+import Sheet, { SheetRef } from 'react-modal-sheet';
+import useDetectKeyboardOpen from 'use-detect-keyboard-open';
 
 type BottomSheetProps = {
   title?: string;
   children: ReactNode;
   isOpen: boolean;
+  isEffect?: boolean;
   onClose: (isOpen: boolean) => void;
 };
 
@@ -15,15 +19,32 @@ const BottomSheet = ({
   children,
   isOpen,
   onClose,
+  isEffect,
 }: BottomSheetProps) => {
+  const ref = useRef<SheetRef>(null);
+  const isKeyboardOpen = useDetectKeyboardOpen();
+
+  const keyboardHeight =
+    (isKeyboardOpen &&
+      window.visualViewport &&
+      window.innerHeight - window.visualViewport.height + 'px') ||
+    0;
+
   return (
     <StyledSheet
+      ref={ref}
       isOpen={isOpen}
       onClose={() => onClose(false)}
+      rootId={isEffect ? '__next' : ''}
       detent='content-height'
       className='max-w-[480px] mx-auto'
     >
-      <Sheet.Container>
+      <Sheet.Container
+        style={{
+          paddingBottom: keyboardHeight || '0',
+          transition: 'padding 200ms',
+        }}
+      >
         <Sheet.Header>
           <StyledSheetHeader className='dark:border-b dark:border-b-neutral-700 dark:bg-neutral-800'>
             <div className='font-semibold'>{title}</div>
