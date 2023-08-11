@@ -98,7 +98,7 @@ const TaskItem = ({
           <div className='w-auto flex gap-2 items-center'>
             <StartIcon
               onClick={handleStartTimer}
-              className='cursor-pointer text-green-400'
+              className='cursor-pointer text-green-600 dark:text-green-400'
               size={20}
             />
           </div>
