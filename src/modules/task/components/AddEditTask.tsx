@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import React from 'react';
+import { useState } from 'react';
+import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
 
@@ -23,6 +24,8 @@ const AddEditTask = ({
   onSave,
 }: AddEditTaskProps) => {
   const { addTask, updateTask, deleteTask } = useTaskStore();
+
+  const [isNote, setNote] = useState(!!notes);
 
   const generateTaskId = uuidv4();
   const taskId = id ?? generateTaskId;
@@ -92,19 +95,32 @@ const AddEditTask = ({
               </div>
             ) : null}
           </div>
-          <div className='flex flex-col space-y-2'>
-            <label
-              htmlFor='title'
-              className='text-sm text-neutral-700 dark:text-neutral-300'
-            >
-              Notes
-            </label>
-            <textarea
-              placeholder='Input task notes...'
-              className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
-              {...formik.getFieldProps('notes')}
-            />
-          </div>
+
+          {isNote ? (
+            <div className='flex flex-col space-y-2'>
+              <label
+                htmlFor='title'
+                className='text-sm text-neutral-700 dark:text-neutral-300'
+              >
+                Notes
+              </label>
+              <textarea
+                placeholder='Input task notes...'
+                className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
+                {...formik.getFieldProps('notes')}
+              />
+            </div>
+          ) : (
+            <div className='flex'>
+              <button
+                type='button'
+                className='py-1 px-2 flex gap-1 items-center text-sm text-neutral-500 border border-dashed'
+                onClick={() => setNote(!isNote)}
+              >
+                <AddTaskIcon size={18} /> Add Note
+              </button>
+            </div>
+          )}
         </div>
         <div className='flex gap-3 justify-between'>
           {action === 'edit' && (
