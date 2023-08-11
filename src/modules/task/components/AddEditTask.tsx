@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
-import * as Yup from 'yup';
 
 import { useTaskStore } from '@/common/store/task';
 import { TaskProps } from '@/common/types/task';
@@ -20,6 +20,8 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
 
   const titleInputRef = useRef<HTMLInputElement>(null);
 
+  const [isNote, setNote] = useState(!!note);
+
   const generateTaskId = uuidv4();
   const taskId = id ?? generateTaskId;
 
@@ -30,10 +32,6 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
     is_completed: false,
     created_at: new Date(),
   };
-
-  const validationSchema = Yup.object({
-    title: Yup.string().required('Title is required'),
-  });
 
   const onSubmit = (values: TaskProps) => {
     const taskData = {
@@ -60,7 +58,6 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
 
   const formik = useFormik({
     initialValues,
-    validationSchema,
     onSubmit,
   });
 
@@ -83,7 +80,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
               htmlFor='title'
               className='text-sm text-neutral-700 dark:text-neutral-300'
             >
-              Title<span className='ml-1 text-red-500 text-xs'>*</span>
+              Title<span className='ml-1 text-xs text-red-400'>*</span>
             </label>
             <input
               ref={titleInputRef}
@@ -100,19 +97,34 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
             ) : null}
           </div>
 
-          <div className='flex flex-col space-y-2'>
-            <label
-              htmlFor='title'
-              className='text-sm text-neutral-700 dark:text-neutral-300'
-            >
-              Note
-            </label>
-            <textarea
-              placeholder='Input a note...'
-              className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
-              {...formik.getFieldProps('notes')}
-            />
-          </div>
+          {isNote ? (
+            <div className='flex flex-col space-y-2'>
+              <label
+                htmlFor='title'
+                className='text-sm text-neutral-700 dark:text-neutral-300'
+              >
+                Note
+              </label>
+              <textarea
+                placeholder='Input a note...'
+                className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
+                {...formik.getFieldProps('note')}
+              />
+            </div>
+          ) : (
+            <div className='flex'>
+              <button
+                type='button'
+                className='py-1 px-2 flex gap-1 items-center text-sm text-neutral-600 dark:text-neutral-400 border border-dashed border-neutral-300 dark:border-neutral-700 rounded-full'
+                onClick={(event) => {
+                  event.preventDefault();
+                  setNote(!isNote);
+                }}
+              >
+                <AddTaskIcon size={18} /> Add Note
+              </button>
+            </div>
+          )}
         </div>
         <div className='flex gap-3 justify-between'>
           {action === 'edit' && (
