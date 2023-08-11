@@ -64,7 +64,7 @@ const BottomSheet = ({
           </StyledSheetHeader>
         </Sheet.Header>
         <Sheet.Content className='dark:bg-neutral-800'>
-          {children}
+          <Sheet.Scroller>{children}</Sheet.Scroller>
         </Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop onTap={() => onClose(false)} />
