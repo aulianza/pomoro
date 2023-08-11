@@ -68,10 +68,14 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
   });
 
   useEffect(() => {
-    if (titleInputRef.current) {
-      titleInputRef.current.focus();
-    }
-  }, []);
+    const timeoutId = setTimeout(() => {
+      if (titleInputRef.current) {
+        titleInputRef.current.focus();
+      }
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [action]);
 
   return (
     <div className='p-6 space-y-6'>
