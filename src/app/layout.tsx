@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
         className={clsx(
-          'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 dark:bg-neutral-50',
+          'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 md:dark:bg-neutral-50',
           sora.className,
         )}
       >
