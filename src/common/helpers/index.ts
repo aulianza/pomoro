@@ -7,11 +7,8 @@ export const getZonedTime = () => {
   return utcToZonedTime(currentTime, timezone);
 };
 
-export const getTimeOfDay = (): string => {
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const currentTime = new Date();
-  const zonedTime = utcToZonedTime(currentTime, timezone);
-  const hours = getHours(zonedTime);
+export const getTimeOfDay = () => {
+  const hours = getHours(getZonedTime());
 
   if (hours >= 5 && hours < 12) {
     return 'Good Morning';
@@ -19,15 +16,11 @@ export const getTimeOfDay = (): string => {
     return 'Good Afternoon';
   } else if (hours >= 17 && hours < 21) {
     return 'Good Evening';
-  } else {
+  } else if (hours >= 21 && hours < 5) {
     return 'Good Night';
   }
 };
 
 export const getFormattedDate = (): string => {
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const currentTime = new Date();
-  const zonedTime = utcToZonedTime(currentTime, timezone);
-
-  return format(zonedTime, 'eeee, MMMM d');
+  return format(getZonedTime(), 'eeee, MMMM d');
 };
