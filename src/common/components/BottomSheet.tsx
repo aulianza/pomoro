@@ -10,7 +10,6 @@ type BottomSheetProps = {
   title?: string;
   children: ReactNode;
   isOpen: boolean;
-  isEffect?: boolean;
   onClose: (isOpen: boolean) => void;
 };
 
@@ -19,7 +18,6 @@ const BottomSheet = ({
   children,
   isOpen,
   onClose,
-  isEffect,
 }: BottomSheetProps) => {
   const ref = useRef<SheetRef>(null);
   const isKeyboardOpen = useDetectKeyboardOpen();
@@ -39,7 +37,6 @@ const BottomSheet = ({
       ref={ref}
       isOpen={isOpen}
       onClose={() => onClose(false)}
-      rootId={isEffect ? '__next' : ''}
       detent='content-height'
       className='max-w-[480px] mx-auto'
     >
