@@ -18,9 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <head>
-        <meta name='theme-color' content='#171717' />
-      </head>
       <body
         suppressHydrationWarning={true}
         className={clsx(
