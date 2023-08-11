@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { MouseEvent, ReactNode, useRef } from 'react';
 import { IoMdClose as CloseIcon } from 'react-icons/io';
 import Sheet, { SheetRef } from 'react-modal-sheet';
-// import useDetectKeyboardOpen from 'use-detect-keyboard-open';
+import useDetectKeyboardOpen from 'use-detect-keyboard-open';
 
 type BottomSheetProps = {
   title?: string;
@@ -22,17 +22,17 @@ const BottomSheet = ({
   isEffect,
 }: BottomSheetProps) => {
   const ref = useRef<SheetRef>(null);
-  // const isKeyboardOpen = useDetectKeyboardOpen();
+  const isKeyboardOpen = useDetectKeyboardOpen();
 
-  // const isIOSDevice =
-  //   typeof navigator !== 'undefined' &&
-  //   /(iPhone|iPad)/i.test(navigator.userAgent);
+  const isIOSDevice =
+    typeof navigator !== 'undefined' &&
+    /(iPhone|iPad)/i.test(navigator.userAgent);
 
-  // const keyboardHeight =
-  //   isIOSDevice && isKeyboardOpen
-  //     ? window.visualViewport &&
-  //       window.innerHeight - window.visualViewport.height + 'px'
-  //     : undefined;
+  const keyboardHeight =
+    isIOSDevice && isKeyboardOpen
+      ? window.visualViewport &&
+        window.innerHeight - window.visualViewport.height + 'px'
+      : undefined;
 
   return (
     <StyledSheet
@@ -44,10 +44,10 @@ const BottomSheet = ({
       className='max-w-[480px] mx-auto'
     >
       <Sheet.Container
-      // style={{
-      //   paddingBottom: keyboardHeight || '0',
-      //   transition: 'padding 200ms',
-      // }}
+        style={{
+          paddingBottom: keyboardHeight || '0',
+          transition: 'padding 200ms',
+        }}
       >
         <Sheet.Header>
           <StyledSheetHeader className='dark:border-b dark:border-b-neutral-700 dark:bg-neutral-800'>
