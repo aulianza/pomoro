@@ -1,14 +1,11 @@
 import { format, getHours } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 
-export const getZonedTime = () => {
+export const getTimeOfDay = () => {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const currentTime = new Date();
-  return utcToZonedTime(currentTime, timezone);
-};
-
-export const getTimeOfDay = () => {
-  const hours = getHours(getZonedTime());
+  const zonedTime = utcToZonedTime(currentTime, timezone);
+  const hours = getHours(zonedTime);
 
   if (hours >= 5 && hours < 12) {
     return 'Good Morning';
@@ -22,5 +19,9 @@ export const getTimeOfDay = () => {
 };
 
 export const getFormattedDate = (): string => {
-  return format(getZonedTime(), 'eeee, MMMM d');
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const currentTime = new Date();
+  const zonedTime = utcToZonedTime(currentTime, timezone);
+
+  return format(zonedTime, 'eeee, MMMM d');
 };
