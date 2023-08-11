@@ -8,10 +8,8 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-html,
-body {
-  -webkit-overflow-scrolling: touch !important;
-  overflow: auto !important;
+html {
+  min-height: 100vh;
 }
 
 input,

@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
+import * as Yup from 'yup';
 
 import { useTaskStore } from '@/common/store/task';
 import { TaskProps } from '@/common/types/task';
@@ -33,6 +34,10 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
     created_at: new Date(),
   };
 
+  const validationSchema = Yup.object({
+    title: Yup.string().required('Title is required'),
+  });
+
   const onSubmit = (values: TaskProps) => {
     const taskData = {
       ...values,
@@ -58,6 +63,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
 
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit,
   });
 
