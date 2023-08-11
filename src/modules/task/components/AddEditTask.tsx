@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
-// import { MdAdd as AddTaskIcon } from 'react-icons/md';
+import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
 
@@ -99,7 +99,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
             ) : null}
           </div>
 
-          {/* {isNote ? (
+          {isNote ? (
             <div className='flex flex-col space-y-2'>
               <label
                 htmlFor='title'
@@ -123,7 +123,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
                 <AddTaskIcon size={18} /> Add Note
               </button>
             </div>
-          )} */}
+          )}
         </div>
         <div className='flex gap-3 justify-between'>
           {action === 'edit' && (
