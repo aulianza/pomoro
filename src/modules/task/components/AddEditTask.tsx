@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import { useState } from 'react';
-import { MdAdd as AddTaskIcon } from 'react-icons/md';
+import { useEffect, useRef, useState } from 'react';
+// import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
 
@@ -18,6 +18,8 @@ type AddEditTaskProps = {
 
 const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
   const { addTask, updateTask, deleteTask } = useTaskStore();
+
+  const titleInputRef = useRef<HTMLInputElement>(null);
 
   const [isNote, setNote] = useState(!!note);
 
@@ -65,6 +67,12 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
     onSubmit,
   });
 
+  useEffect(() => {
+    if (titleInputRef.current) {
+      titleInputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className='p-6 space-y-6'>
       <form onSubmit={formik.handleSubmit}>
@@ -77,6 +85,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
               Title
             </label>
             <input
+              ref={titleInputRef}
               type='text'
               placeholder='Input task title...'
               className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
@@ -90,7 +99,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
             ) : null}
           </div>
 
-          {isNote ? (
+          {/* {isNote ? (
             <div className='flex flex-col space-y-2'>
               <label
                 htmlFor='title'
@@ -114,7 +123,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
                 <AddTaskIcon size={18} /> Add Note
               </button>
             </div>
-          )}
+          )} */}
         </div>
         <div className='flex gap-3 justify-between'>
           {action === 'edit' && (
