@@ -14,7 +14,7 @@ import AddEditTask from './AddEditTask';
 const TaskItem = ({
   id,
   title,
-  notes,
+  note,
   is_completed,
   label,
   due_date,
@@ -36,7 +36,7 @@ const TaskItem = ({
       is_completed: event.target.checked,
       id,
       title,
-      notes,
+      note,
       label,
       due_date,
       start_time,
@@ -88,8 +88,9 @@ const TaskItem = ({
             />
             <div
               className={clsx(
-                'text-[15px] text-neutral-800 dark:text-neutral-200',
-                isCompleted && 'line-through',
+                'text-[15px] dark:text-neutral-200',
+                isCompleted &&
+                  'line-through text-neutral-600 dark:text-neutral-400',
               )}
             >
               {title}
@@ -109,7 +110,7 @@ const TaskItem = ({
           action='edit'
           id={id}
           title={title}
-          notes={notes}
+          note={note}
           onSave={() => setOpen(false)}
         />
       </BottomSheet>

@@ -7,5 +7,5 @@ export interface TaskProps {
   start_time?: string;
   end_time?: string;
   created_at: Date;
-  notes?: string;
+  note?: string;
 }
