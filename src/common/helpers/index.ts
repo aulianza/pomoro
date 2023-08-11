@@ -13,8 +13,10 @@ export const getTimeOfDay = () => {
     return 'Good Afternoon';
   } else if (hours >= 17 && hours < 21) {
     return 'Good Evening';
-  } else if (hours >= 21 && hours < 5) {
+  } else if (hours < 5 && hours >= 21) {
     return 'Good Night';
+  } else {
+    return 'Have a nice day';
   }
 };
 
