@@ -1,3 +1,4 @@
+import { ServerThemeProvider } from '@wits/next-themes';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Sora } from 'next/font/google';
@@ -17,18 +18,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body
-        suppressHydrationWarning={true}
-        className={clsx(
-          'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 md:dark:bg-neutral-50',
-          sora.className,
-        )}
-      >
-        <div className='max-w-[480px] mx-auto bg-neutral-50 dark:bg-neutral-800 md:shadow-md md:min-h-screen'>
-          {children}
-        </div>
-      </body>
-    </html>
+    <ServerThemeProvider>
+      <html lang='en'>
+        <body
+          suppressHydrationWarning={true}
+          className={clsx(
+            'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 md:dark:bg-neutral-50',
+            sora.className,
+          )}
+        >
+          <div className='max-w-[480px] mx-auto bg-neutral-50 dark:bg-neutral-800 md:shadow-md md:min-h-screen'>
+            {children}
+          </div>
+        </body>
+      </html>
+    </ServerThemeProvider>
   );
 }
