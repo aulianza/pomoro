@@ -21,11 +21,11 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
         className={clsx(
-          'bg-neutral-50 dark:bg-neutral-800 md:bg-white dark:md:bg-white',
+          'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 dark:bg-neutral-50',
           sora.className,
         )}
       >
-        <div className='max-w-[480px] mx-auto bg-neutral-50 dark:bg-neutral-800 md:shadow-md md:h-screen'>
+        <div className='max-w-[480px] mx-auto bg-neutral-50 dark:bg-neutral-800 md:shadow-md md:min-h-screen'>
           {children}
         </div>
       </body>

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 import { TaskProps } from '../types/task';
 
@@ -34,7 +34,7 @@ export const useTaskStore = create<TaskStoreProps>()(
     }),
     {
       name: 'task-data',
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );
