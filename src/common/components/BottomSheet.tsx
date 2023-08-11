@@ -67,7 +67,8 @@ const BottomSheet = ({
           <Sheet.Scroller>{children}</Sheet.Scroller>
         </Sheet.Content>
       </Sheet.Container>
-      <Sheet.Backdrop onTap={() => onClose(false)} />
+      <Sheet.Backdrop />
+      {/* <Sheet.Backdrop onTap={() => onClose(false)} /> */}
     </StyledSheet>
   );
 };
