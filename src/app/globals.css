@@ -8,6 +8,12 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html,
+body {
+  -webkit-overflow-scrolling: touch !important;
+  overflow: auto !important;
+}
+
 input,
 textarea,
 button,
