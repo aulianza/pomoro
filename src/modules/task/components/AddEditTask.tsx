@@ -20,7 +20,6 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
   const { addTask, updateTask, deleteTask } = useTaskStore();
 
   const titleInputRef = useRef<HTMLInputElement>(null);
-  const noteTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [isNote, setNote] = useState(!!note);
 
@@ -78,34 +77,6 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
     return () => clearTimeout(timeoutId);
   }, [action]);
 
-  useEffect(() => {
-    const handleFocus = () => {
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-    };
-
-    const titleInput = titleInputRef.current;
-    const noteTextarea = noteTextareaRef.current;
-
-    if (titleInput) {
-      titleInput.onfocus = handleFocus;
-    }
-
-    if (noteTextarea) {
-      noteTextarea.onfocus = handleFocus;
-    }
-
-    return () => {
-      if (titleInput) {
-        titleInput.onfocus = null;
-      }
-
-      if (noteTextarea) {
-        noteTextarea.onfocus = null;
-      }
-    };
-  }, []);
-
   return (
     <div className='p-6 space-y-6'>
       <form onSubmit={formik.handleSubmit}>
@@ -141,7 +112,6 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
                 Note
               </label>
               <textarea
-                ref={noteTextareaRef}
                 placeholder='Input a note...'
                 className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
                 {...formik.getFieldProps('note')}
