@@ -19,7 +19,7 @@ export const useTaskStore = create<TaskStoreProps>()(
         set({ tasks });
       },
       addTask: (task) => {
-        set((state) => ({ tasks: [...state.tasks, task] }));
+        set((state) => ({ tasks: [task, ...state.tasks] }));
       },
       updateTask: (task) => {
         set((state) => ({
