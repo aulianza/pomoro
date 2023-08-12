@@ -5,7 +5,6 @@ import { TaskProps } from '../types/task';
 
 type TaskStoreProps = {
   tasks: TaskProps[];
-  setTasks: (tasks: TaskProps[]) => void;
   addTask: (task: TaskProps) => void;
   updateTask: (task: TaskProps) => void;
   deleteTask: (taskId: string) => void;
@@ -15,9 +14,6 @@ export const useTaskStore = create<TaskStoreProps>()(
   persist(
     (set) => ({
       tasks: [],
-      setTasks: (tasks) => {
-        set({ tasks });
-      },
       addTask: (task) => {
         set((state) => ({ tasks: [task, ...state.tasks] }));
       },

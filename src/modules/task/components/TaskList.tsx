@@ -28,6 +28,20 @@ const TaskList = () => {
     setMounted(true);
   }, [tasks]);
 
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.keyCode === 65 || event.keyCode === 97) {
+        setOpen(true);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
   return (
     <div className='pt-6 px-6 pb-28 space-y-5'>
       <div className='flex justify-between items-center'>
@@ -44,7 +58,7 @@ const TaskList = () => {
       </div>
       <div className='flex flex-col gap-2'>
         {isMounted
-          ? tasks?.map((task) => <TaskItem key={task?.id} {...task} />)
+          ? tasks?.map((task, index) => <TaskItem key={index} {...task} />)
           : renderLoading()}
       </div>
 

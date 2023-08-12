@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
+import { BiTrash as DeleteTaskIcon } from 'react-icons/bi';
 import { MdAdd as AddTaskIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
@@ -13,10 +14,20 @@ type AddEditTaskProps = {
   id?: string;
   title?: string;
   note?: string;
+  isCompleted?: boolean;
   onSave: () => void;
+  onStartTimer?: (event: React.MouseEvent) => void;
 };
 
-const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
+const AddEditTask = ({
+  action,
+  id,
+  title,
+  isCompleted,
+  note,
+  onSave,
+  onStartTimer,
+}: AddEditTaskProps) => {
   const { addTask, updateTask, deleteTask } = useTaskStore();
 
   const titleInputRef = useRef<HTMLInputElement>(null);
@@ -134,13 +145,24 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
         </div>
         <div className='flex gap-3 justify-between'>
           {action === 'edit' && (
-            <button
-              type='button'
-              className='py-3 px-4 bg-red-500 rounded-full w-full text-white'
-              onClick={() => handleDeleteTask()}
-            >
-              Delete Task
-            </button>
+            <>
+              <button
+                type='button'
+                className='py-3 px-4 bg-red-500 rounded-full w-fit text-white'
+                onClick={() => handleDeleteTask()}
+              >
+                <DeleteTaskIcon size={20} />
+              </button>
+              {!isCompleted && (
+                <button
+                  type='button'
+                  className='py-3 px-4 bg-green-500 rounded-full w-full text-white'
+                  onClick={onStartTimer}
+                >
+                  Timer
+                </button>
+              )}
+            </>
           )}
           <button
             type='submit'
@@ -151,7 +173,7 @@ const AddEditTask = ({ action, id, title, note, onSave }: AddEditTaskProps) => {
                 'opacity-50 cursor-not-allowed',
             )}
           >
-            {action === 'add' ? 'Add' : 'Save'} Task
+            {action === 'add' ? 'Add' : 'Save'}
           </button>
         </div>
       </form>

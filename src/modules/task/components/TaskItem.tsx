@@ -1,12 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsFillPlayCircleFill as StartIcon } from 'react-icons/bs';
 
 import BottomSheet from '@/common/components/BottomSheet';
 import Checkbox from '@/common/components/Checkbox';
 import { useTaskStore } from '@/common/store/task';
+import { useTimerStore } from '@/common/store/timer';
 import { TaskProps } from '@/common/types/task';
 
 import AddEditTask from './AddEditTask';
@@ -23,6 +25,9 @@ const TaskItem = ({
   created_at,
 }: TaskProps) => {
   const { updateTask } = useTaskStore();
+  const { activeTask, setActiveTask, setEnd } = useTimerStore();
+
+  const router = useRouter();
 
   const [isOpen, setOpen] = useState(false);
   const [isCompleted, setCompleted] = useState(is_completed);
@@ -51,10 +56,24 @@ const TaskItem = ({
     event.stopPropagation();
   };
 
-  const handleStartTimer = (event: React.MouseEvent<SVGSVGElement>) => {
+  const handleStartTimer = (event: React.MouseEvent) => {
     event.stopPropagation();
 
-    console.log('start timer');
+    setActiveTask({
+      id,
+      title,
+      note,
+      label,
+      due_date,
+      start_time,
+      end_time,
+      created_at,
+      is_completed: false,
+    });
+
+    if (activeTask?.id !== id) setEnd();
+
+    router.push('/timer');
   };
 
   useEffect(() => {
@@ -98,8 +117,12 @@ const TaskItem = ({
           </div>
           <div className='w-auto flex gap-2 items-center'>
             <StartIcon
-              onClick={handleStartTimer}
-              className='cursor-pointer text-green-600 dark:text-green-400'
+              onClick={!isCompleted ? handleStartTimer : null}
+              className={clsx(
+                'cursor-pointer text-green-600 dark:text-green-400',
+                isCompleted &&
+                  'cursor-not-allowed text-neutral-300 dark:text-neutral-700',
+              )}
               size={20}
             />
           </div>
@@ -110,8 +133,10 @@ const TaskItem = ({
           action='edit'
           id={id}
           title={title}
+          isCompleted={isCompleted}
           note={note}
           onSave={() => setOpen(false)}
+          onStartTimer={handleStartTimer}
         />
       </BottomSheet>
     </>
