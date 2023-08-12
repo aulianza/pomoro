@@ -93,7 +93,7 @@ const Timer = () => {
           <SelectIcon size={22} />
         </div>
       </div>
-      <div className='flex flex-col justify-center items-center space-y-6 my-10'>
+      <div className='flex flex-col justify-center items-center space-y-6 my-5'>
         <div className='p-4 rounded text-center'>
           <div className='text-lg mb-5'>{timerMode?.title}</div>
           <LottiePlayer
@@ -108,19 +108,19 @@ const Timer = () => {
           </div>
         </div>
 
-        <div className='flex flex-col items-center gap-3 mt-5 mb-20 pb-32'>
+        <div className='flex flex-col items-center gap-3 mt-10 mb-20 pt-5 pb-32'>
           <div className='flex gap-2'>
             {!isRunning ? (
               <>
                 <button
-                  className='py-2 px-5 rounded-full bg-green-500 text-white flex items-center gap-1 hover:shadow-sm'
+                  className='py-3 px-6 rounded-full bg-green-500 text-white flex items-center gap-1 hover:shadow-sm'
                   onClick={setStart}
                 >
                   <StartIcon size={22} />
                   {isPaused ? 'Resume' : 'Start'}
                 </button>
                 <button
-                  className='py-2 px-5 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center gap-1 hover:shadow-sm'
+                  className='py-3 px-6 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center gap-1 hover:shadow-sm'
                   onClick={transitionToNextMode}
                 >
                   <SkipIcon size={22} />
@@ -129,7 +129,7 @@ const Timer = () => {
               </>
             ) : (
               <button
-                className='py-2 px-5 rounded-full bg-amber-300 dark:text-neutral-900 flex items-center gap-1 hover:shadow-sm'
+                className='py-3 px-6 rounded-full bg-amber-300 dark:text-neutral-900 flex items-center gap-1 hover:shadow-sm'
                 onClick={setPause}
               >
                 <PauseIcon size={22} />
@@ -142,7 +142,7 @@ const Timer = () => {
             {isRunning ||
               (isPaused && (
                 <button
-                  className='py-2 px-5 rounded-full bg-red-500 text-white flex items-center gap-1 hover:shadow-sm'
+                  className='py-3 px-6 rounded-full bg-red-500 text-white flex items-center gap-1 hover:shadow-sm'
                   onClick={setEnd}
                 >
                   <EndIcon size={22} />
