@@ -15,14 +15,7 @@ const TaskList = () => {
   const [isOpen, setOpen] = useState(false);
   const [isMounted, setMounted] = useState(false);
 
-  const renderLoading = () => {
-    return null;
-    // return (
-    //   <div className='mx-auto py-10 text-neutral-400 dark:text-neutral-600'>
-    //     Loading...
-    //   </div>
-    // );
-  };
+  const renderLoading = () => null;
 
   useEffect(() => {
     setMounted(true);

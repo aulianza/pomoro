@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
+
 import { format } from 'date-fns';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -32,6 +33,7 @@ const Timer = () => {
   } = useTimerStore();
 
   const [isOpen, setOpen] = useState(false);
+  const [isMounted, setMounted] = useState(false);
 
   const circleControls = useAnimation();
 
@@ -76,6 +78,10 @@ const Timer = () => {
     handleResetCircleControls();
   }, [timerMode]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, [activeTask]);
+
   return (
     <>
       <div className='h-screen'>
@@ -88,7 +94,7 @@ const Timer = () => {
           >
             <div className='flex items-center gap-2 '>
               <TaskIcon size={18} />
-              {activeTask?.title || 'Select Task...'}
+              {(isMounted && activeTask?.title) || 'Select Task...'}
             </div>
             <SelectIcon size={22} />
           </div>

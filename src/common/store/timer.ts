@@ -70,14 +70,8 @@ export const useTimerStore = create<InitialTimerProps>()(
         });
       },
 
-      timerMode:
-        localStorage.getItem('timerMode') !== null
-          ? JSON.parse(localStorage.getItem('timerMode')!)
-          : timerMode[0],
-      time:
-        localStorage.getItem('timerTime') !== null
-          ? parseInt(localStorage.getItem('timerTime')!)
-          : timerMode[0].time,
+      timerMode: timerMode[0],
+      time: timerMode[0].time,
       isRunning: false,
       isPaused: false,
 
