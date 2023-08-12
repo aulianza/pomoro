@@ -93,9 +93,9 @@ const Timer = () => {
           <SelectIcon size={22} />
         </div>
       </div>
-      <div className='flex flex-col justify-center items-center h-screen'>
+      <div className='flex flex-col justify-center items-center space-y-6 my-10'>
         <div className='p-4 rounded text-center'>
-          <div className='text-lg'>{timerMode?.title}</div>
+          <div className='text-lg mb-5'>{timerMode?.title}</div>
           <LottiePlayer
             status={animationStatus}
             autoplay={false}
@@ -108,7 +108,7 @@ const Timer = () => {
           </div>
         </div>
 
-        <div className='flex flex-col items-center gap-3 mt-5 mb-20 pb-20'>
+        <div className='flex flex-col items-center gap-3 mt-5 mb-20 pb-32'>
           <div className='flex gap-2'>
             {!isRunning ? (
               <>
