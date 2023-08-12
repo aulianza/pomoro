@@ -57,8 +57,8 @@ const Timer = () => {
   }, [isRunning, time]);
 
   useEffect(() => {
-    if (timerMode?.mode === 'focus' && time !== 10) setPause();
-    if (timerMode?.mode === 'shortBreak' && time !== 5) setPause();
+    if (timerMode?.mode === 'focus' && time !== 1500) setPause();
+    if (timerMode?.mode === 'shortBreak' && time !== 300) setPause();
   }, []);
 
   useEffect(() => {
@@ -100,8 +100,8 @@ const Timer = () => {
             status={animationStatus}
             autoplay={false}
             src={timerAnimationData}
-            width='250px'
-            height='250px'
+            width='200px'
+            height='200px'
           />
           <div className='text-6xl font-bold text-neutral-900 dark:text-neutral-100'>
             {format(new Date(time * 1000), 'mm:ss')}
@@ -154,7 +154,7 @@ const Timer = () => {
       </div>
 
       <BottomSheet title='Select Task' isOpen={isOpen} onClose={setOpen}>
-        <TaskListModal />
+        <TaskListModal onClose={() => setOpen(false)} />
       </BottomSheet>
     </>
   );

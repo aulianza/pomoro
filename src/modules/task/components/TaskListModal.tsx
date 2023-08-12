@@ -6,7 +6,11 @@ import { useTaskStore } from '@/common/store/task';
 
 import TaskItemModalSelect from './TaskItemModalSelect';
 
-const TaskListModal = () => {
+type TaskListModalProps = {
+  onClose: () => void;
+};
+
+const TaskListModal = ({ onClose }: TaskListModalProps) => {
   const { tasks } = useTaskStore();
 
   const [isMounted, setMounted] = useState(false);
@@ -33,7 +37,7 @@ const TaskListModal = () => {
       <div className='flex flex-col gap-2'>
         {isMounted
           ? sortedTasks?.map((task, index) => (
-              <TaskItemModalSelect key={index} {...task} />
+              <TaskItemModalSelect key={index} {...task} onSelect={onClose} />
             ))
           : renderLoading()}
       </div>

@@ -3,12 +3,17 @@ import clsx from 'clsx';
 import { useTimerStore } from '@/common/store/timer';
 import { TaskProps } from '@/common/types/task';
 
-const TaskItemModalSelect = (props: TaskProps) => {
+type TaskItemModalSelectProps = {
+  onSelect: () => void;
+} & TaskProps;
+
+const TaskItemModalSelect = (props: TaskItemModalSelectProps) => {
   const { activeTask, setActiveTask, setEnd } = useTimerStore();
 
   const handleSelectTask = () => {
     setActiveTask(props);
     setEnd();
+    props.onSelect();
 
     if (props?.id === activeTask?.id) {
       setActiveTask(null);
