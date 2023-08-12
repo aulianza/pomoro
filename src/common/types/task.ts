@@ -3,9 +3,9 @@ export interface TaskProps {
   title: string;
   is_completed: boolean;
   label?: string;
-  due_date?: Date;
+  due_date?: string;
   start_time?: string;
   end_time?: string;
-  created_at: Date;
+  created_at: string;
   note?: string;
 }

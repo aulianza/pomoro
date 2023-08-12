@@ -15,6 +15,7 @@ type AddEditTaskProps = {
   title?: string;
   note?: string;
   isCompleted?: boolean;
+  created_at?: string;
   onSave: () => void;
   onStartTimer?: (event: React.MouseEvent) => void;
 };
@@ -27,6 +28,7 @@ const AddEditTask = ({
   note,
   onSave,
   onStartTimer,
+  created_at,
 }: AddEditTaskProps) => {
   const { addTask, updateTask, deleteTask } = useTaskStore();
 
@@ -42,7 +44,7 @@ const AddEditTask = ({
     title: title ?? '',
     note: note ?? '',
     is_completed: false,
-    created_at: new Date(),
+    created_at: created_at || new Date().toISOString(),
   };
 
   const validationSchema = Yup.object({

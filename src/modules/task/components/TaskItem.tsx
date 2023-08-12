@@ -30,7 +30,7 @@ const TaskItem = ({
   const router = useRouter();
 
   const [isOpen, setOpen] = useState(false);
-  const [isCompleted, setCompleted] = useState(is_completed);
+  const [isCompleted, setCompleted] = useState(false);
 
   const handleCompleteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation();
@@ -90,6 +90,10 @@ const TaskItem = ({
     };
   }, []);
 
+  useEffect(() => {
+    setCompleted(is_completed);
+  }, [id, is_completed]);
+
   return (
     <>
       <div
@@ -134,6 +138,7 @@ const TaskItem = ({
           id={id}
           title={title}
           isCompleted={isCompleted}
+          created_at={created_at}
           note={note}
           onSave={() => setOpen(false)}
           onStartTimer={handleStartTimer}

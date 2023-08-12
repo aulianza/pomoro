@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MdAdd as AddTaskIcon } from 'react-icons/md';
 
 import BottomSheet from '@/common/components/BottomSheet';
@@ -11,6 +11,7 @@ import TaskItem from './TaskItem';
 
 const TaskList = () => {
   const { tasks } = useTaskStore();
+  console.log('🚀 aulianza ~ TaskList ~ tasks => ', tasks);
 
   const [isOpen, setOpen] = useState(false);
   const [isMounted, setMounted] = useState(false);
@@ -35,6 +36,13 @@ const TaskList = () => {
     };
   }, []);
 
+  const sortedTasks = useMemo(() => {
+    return isMounted
+      ? tasks.slice().sort((a, b) => b.created_at.localeCompare(a.created_at))
+      : [];
+  }, [isMounted, tasks]);
+  console.log('🚀 aulianza ~ sortedTasks ~ sortedTasks => ', sortedTasks);
+
   return (
     <div className='pt-6 px-6 pb-28 space-y-5'>
       <div className='flex justify-between items-center'>
@@ -51,7 +59,7 @@ const TaskList = () => {
       </div>
       <div className='flex flex-col gap-2'>
         {isMounted
-          ? tasks?.map((task, index) => <TaskItem key={index} {...task} />)
+          ? sortedTasks.map((task, index) => <TaskItem key={index} {...task} />)
           : renderLoading()}
       </div>
 

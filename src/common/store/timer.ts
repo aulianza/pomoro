@@ -15,6 +15,7 @@ type InitialTimerProps = {
   time: number;
   isRunning: boolean;
   isPaused: boolean;
+  isEnd: boolean;
   currentCycleType: string;
   cycleCount: number;
   setActiveTask: (task: TaskProps | null) => void;
@@ -58,6 +59,7 @@ export const useTimerStore = create<InitialTimerProps>()(
               time: nextTime,
               isRunning: false,
               isPaused: false,
+              isEnd: false,
               currentCycleType: nextMode.mode,
               cycleCount:
                 nextMode.mode === 'focus'
@@ -74,18 +76,20 @@ export const useTimerStore = create<InitialTimerProps>()(
       time: timerMode[0].time,
       isRunning: false,
       isPaused: false,
+      isEnd: false,
 
       setActiveTask: (task) => {
         set({ activeTask: task });
       },
-      setStart: () => set({ isRunning: true, isPaused: false }),
-      setPause: () => set({ isRunning: false, isPaused: true }),
+      setStart: () => set({ isRunning: true, isPaused: false, isEnd: false }),
+      setPause: () => set({ isRunning: false, isPaused: true, isEnd: false }),
       setEnd: () =>
         set({
           timerMode: timerMode[0],
           time: timerMode[0].time,
           isRunning: false,
           isPaused: false,
+          isEnd: true,
           cycleCount: 0,
           currentCycleType: 'focus',
         }),
