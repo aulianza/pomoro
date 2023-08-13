@@ -130,7 +130,7 @@ const TaskItem = ({
                 isCompleted &&
                   'cursor-not-allowed text-neutral-300 dark:text-neutral-700',
               )}
-              size={20}
+              size={22}
             />
           </div>
         </div>

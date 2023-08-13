@@ -45,7 +45,7 @@ const AddEditTask = ({
     id: taskId,
     title: title ?? '',
     note: note ?? '',
-    pomos: pomos || 1,
+    pomos: pomos || 0,
     is_completed: false,
     created_at: created_at || new Date().toISOString(),
   };

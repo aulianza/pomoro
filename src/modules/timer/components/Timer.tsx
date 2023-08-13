@@ -106,7 +106,7 @@ const Timer = () => {
             {currentTimerMode?.title}
           </div>
 
-          {activeTask?.pomos && (
+          {activeTask?.pomos !== undefined && activeTask?.pomos >= 0 && (
             <div className='flex justify-center items-center gap-1 text-neutral-700'>
               <span className=''>Pomodoro :</span>
               <div className='flex items-center gap-1'>
