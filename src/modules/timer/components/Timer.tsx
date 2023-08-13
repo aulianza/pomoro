@@ -84,7 +84,7 @@ const Timer = () => {
   if (!isMounted) return null;
 
   return (
-    <div className={clsx(dynamicBgClass, 'min-h-screen flex flex-col')}>
+    <div className={clsx(dynamicBgClass, 'h-screen  flex flex-col')}>
       <div className='p-5'>
         <div
           onClick={() => {
