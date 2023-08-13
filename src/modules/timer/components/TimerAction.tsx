@@ -30,7 +30,7 @@ const TimerAction = ({ onModeChange }: TimerActionProps) => {
   );
 
   return (
-    <div className='flex flex-col items-center gap-3 mt-10 mb-20 pt-5 pb-32'>
+    <div className='flex flex-col items-center gap-3 my-6'>
       <div className='flex gap-2'>
         {!isRunning ? (
           <>
@@ -44,7 +44,7 @@ const TimerAction = ({ onModeChange }: TimerActionProps) => {
               'Skip',
               onModeChange,
               <SkipIcon size={22} />,
-              'bg-neutral-200 dark:bg-neutral-700',
+              'bg-sky-500 text-white',
             )}
           </>
         ) : (
@@ -52,7 +52,7 @@ const TimerAction = ({ onModeChange }: TimerActionProps) => {
             'Pause',
             setPause,
             <PauseIcon size={22} />,
-            'bg-amber-300 dark:text-neutral-900',
+            'bg-amber-300 text-neutral-900',
           )
         )}
       </div>
