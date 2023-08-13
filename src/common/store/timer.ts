@@ -4,22 +4,7 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 import { useTaskStore } from './task';
 import { timerMode } from '../constants/timer';
 import { TaskProps } from '../types/task';
-import { TimerModeProps } from '../types/timer';
-
-type InitialTimerProps = {
-  activeTask?: TaskProps | null;
-  currentTimerMode: TimerModeProps;
-  isRunning: boolean;
-  isPaused: boolean;
-  isEnd: boolean;
-  interval: number;
-  cycleCount: number;
-  setActiveTask: (task: TaskProps | null) => void;
-  setStart: () => void;
-  setPause: () => void;
-  setEnd: () => void;
-  transitionToNextMode: () => void;
-};
+import { InitialTimerStateProps } from '../types/timer';
 
 const updatePomos = (task: TaskProps | null | undefined) => {
   if (task) {
@@ -30,7 +15,7 @@ const updatePomos = (task: TaskProps | null | undefined) => {
   return task;
 };
 
-export const useTimerStore = create<InitialTimerProps>()(
+export const useTimerStore = create<InitialTimerStateProps>()(
   persist(
     (set) => ({
       cycleCount: 1,

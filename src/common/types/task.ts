@@ -10,3 +10,10 @@ export interface TaskProps {
   note?: string;
   pomos: number;
 }
+
+export type TaskStoreProps = {
+  tasks: TaskProps[];
+  addTask: (task: TaskProps) => void;
+  updateTask: (task: TaskProps) => void;
+  deleteTask: (taskId: string) => void;
+};

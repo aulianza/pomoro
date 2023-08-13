@@ -1,14 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import { TaskProps } from '../types/task';
-
-type TaskStoreProps = {
-  tasks: TaskProps[];
-  addTask: (task: TaskProps) => void;
-  updateTask: (task: TaskProps) => void;
-  deleteTask: (taskId: string) => void;
-};
+import { TaskStoreProps } from '../types/task';
 
 export const useTaskStore = create<TaskStoreProps>()(
   persist(
