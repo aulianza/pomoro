@@ -39,8 +39,8 @@ const TimerAnimation = () => {
       status={animationStatus}
       autoplay={false}
       src={animation}
-      width='200px'
-      height='200px'
+      width='150px'
+      height='150px'
     />
   );
 };
