@@ -14,6 +14,7 @@ type AddEditTaskProps = {
   id?: string;
   title?: string;
   note?: string;
+  pomos?: number;
   isCompleted?: boolean;
   created_at?: string;
   onSave: () => void;
@@ -26,6 +27,7 @@ const AddEditTask = ({
   title,
   isCompleted,
   note,
+  pomos,
   onSave,
   onStartTimer,
   created_at,
@@ -43,6 +45,7 @@ const AddEditTask = ({
     id: taskId,
     title: title ?? '',
     note: note ?? '',
+    pomos: pomos || 1,
     is_completed: false,
     created_at: created_at || new Date().toISOString(),
   };

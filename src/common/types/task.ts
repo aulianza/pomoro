@@ -8,4 +8,5 @@ export interface TaskProps {
   end_time?: string;
   created_at: string;
   note?: string;
+  pomos: number;
 }

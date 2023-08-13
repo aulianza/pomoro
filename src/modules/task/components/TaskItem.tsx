@@ -19,6 +19,7 @@ const TaskItem = ({
   note,
   is_completed,
   label,
+  pomos,
   due_date,
   start_time,
   end_time,
@@ -42,6 +43,7 @@ const TaskItem = ({
       id,
       title,
       note,
+      pomos,
       label,
       due_date,
       start_time,
@@ -64,6 +66,7 @@ const TaskItem = ({
       title,
       note,
       label,
+      pomos,
       due_date,
       start_time,
       end_time,
@@ -140,6 +143,7 @@ const TaskItem = ({
           isCompleted={isCompleted}
           created_at={created_at}
           note={note}
+          pomos={pomos}
           onSave={() => setOpen(false)}
           onStartTimer={handleStartTimer}
         />

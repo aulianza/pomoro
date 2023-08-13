@@ -1,22 +1,18 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+import { useTaskStore } from './task';
+import { timerMode } from '../constants/timer';
 import { TaskProps } from '../types/task';
-
-type TimerModeProps = {
-  mode: string;
-  title: string;
-  time: number;
-};
+import { TimerModeProps } from '../types/timer';
 
 type InitialTimerProps = {
   activeTask?: TaskProps | null;
-  timerMode: TimerModeProps;
-  time: number;
+  currentTimerMode: TimerModeProps;
   isRunning: boolean;
   isPaused: boolean;
   isEnd: boolean;
-  currentCycleType: string;
+  interval: number;
   cycleCount: number;
   setActiveTask: (task: TaskProps | null) => void;
   setStart: () => void;
@@ -25,48 +21,21 @@ type InitialTimerProps = {
   transitionToNextMode: () => void;
 };
 
-const timerMode: TimerModeProps[] = [
-  { mode: 'focus', title: 'Focus', time: 1500 },
-  { mode: 'shortBreak', title: 'Short Break', time: 300 },
-];
+const updatePomos = (task: TaskProps | null | undefined) => {
+  if (task) {
+    const newActiveTask = { ...task, pomos: task.pomos + 1 };
+    useTaskStore.getState().updateTask(newActiveTask);
+    return newActiveTask;
+  }
+  return task;
+};
 
 export const useTimerStore = create<InitialTimerProps>()(
   persist(
     (set) => ({
-      cycleCount: 0,
-      currentCycleType: 'focus',
-      transitionToNextMode: () => {
-        set((state) => {
-          const currentModeIndex = timerMode.findIndex(
-            (mode) => mode.mode === state.currentCycleType,
-          );
-
-          if (currentModeIndex !== -1) {
-            const nextModeIndex = (currentModeIndex + 1) % timerMode.length;
-
-            const nextMode = timerMode[nextModeIndex];
-            const nextTime = nextMode.time;
-
-            return {
-              ...state,
-              timerMode: nextMode,
-              time: nextTime,
-              isRunning: false,
-              isPaused: false,
-              isEnd: false,
-              currentCycleType: nextMode.mode,
-              cycleCount:
-                nextMode.mode === 'focus'
-                  ? state.cycleCount + 1
-                  : state.cycleCount,
-            };
-          }
-
-          return state;
-        });
-      },
-
-      timerMode: timerMode[0],
+      cycleCount: 1,
+      interval: 4,
+      currentTimerMode: timerMode[0],
       time: timerMode[0].time,
       isRunning: false,
       isPaused: false,
@@ -79,14 +48,52 @@ export const useTimerStore = create<InitialTimerProps>()(
       setPause: () => set({ isRunning: false, isPaused: true, isEnd: false }),
       setEnd: () =>
         set({
-          timerMode: timerMode[0],
-          time: timerMode[0].time,
+          currentTimerMode: timerMode[0],
           isRunning: false,
           isPaused: false,
           isEnd: true,
-          cycleCount: 0,
-          currentCycleType: 'focus',
+          cycleCount: 1,
         }),
+
+      transitionToNextMode: () => {
+        set((state) => {
+          let nextMode;
+          let newCycleCount = state.cycleCount;
+          let newuActiveTask = state.activeTask;
+
+          if (
+            state.currentTimerMode.mode === 'focus' &&
+            state.cycleCount < state.interval
+          ) {
+            nextMode = timerMode[1];
+            newuActiveTask = updatePomos(state.activeTask);
+          } else if (
+            state.currentTimerMode.mode === 'shortBreak' &&
+            state.cycleCount < state.interval
+          ) {
+            nextMode = timerMode[0];
+            newCycleCount = state.cycleCount + 1;
+          } else if (
+            state.currentTimerMode.mode === 'focus' &&
+            state.cycleCount === state.interval
+          ) {
+            nextMode = timerMode[2];
+            newuActiveTask = updatePomos(state.activeTask);
+          } else {
+            nextMode = timerMode[0];
+            newCycleCount = 1;
+          }
+
+          const newState = {
+            ...state,
+            activeTask: newuActiveTask,
+            cycleCount: newCycleCount,
+            currentTimerMode: nextMode,
+          };
+
+          return newState;
+        });
+      },
     }),
     {
       name: 'timer-store',
