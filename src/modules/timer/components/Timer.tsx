@@ -12,7 +12,7 @@ import BottomSheet from '@/common/components/BottomSheet';
 import { useTimerStore } from '@/common/store/timer';
 import TaskListModal from '@/modules/task/components/TaskListModal';
 
-import TimerAction from './TImerAction';
+import TimerAction from './TimerAction';
 import TimerAnimation from './TimerAnimation';
 
 const Timer = () => {
