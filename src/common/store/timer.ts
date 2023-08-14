@@ -39,14 +39,12 @@ export const useTimerModeStore = create<InitialTimerModeStateProps>()(
   ),
 );
 
-export const timerModeStore = useTimerModeStore.getState().timerMode;
-
 export const useTimerStore = create<InitialTimerStateProps>()(
   persist(
     (set) => ({
       cycleCount: 1,
       interval: 4,
-      currentTimerMode: timerModeStore[0],
+      currentTimerMode: useTimerModeStore.getState().timerMode[0],
       isRunning: false,
       isPaused: false,
       isEnd: false,
@@ -66,7 +64,7 @@ export const useTimerStore = create<InitialTimerStateProps>()(
       setPause: () => set({ isRunning: false, isPaused: true, isEnd: false }),
       setEnd: () =>
         set({
-          currentTimerMode: timerModeStore[0],
+          currentTimerMode: useTimerModeStore.getState().timerMode[0],
           isRunning: false,
           isPaused: false,
           isEnd: true,
@@ -77,21 +75,23 @@ export const useTimerStore = create<InitialTimerStateProps>()(
           const { cycleCount, interval, activeTask } = state;
           const { mode } = state.currentTimerMode;
 
+          const timerModeState = useTimerModeStore.getState().timerMode;
+
           let nextMode;
           let newCycleCount = cycleCount;
           let newuActiveTask = activeTask;
 
           if (mode === 'focus' && cycleCount < interval) {
-            nextMode = timerModeStore[1];
+            nextMode = timerModeState[1];
             newuActiveTask = updatePomos(state.activeTask);
           } else if (mode === 'shortBreak' && cycleCount < interval) {
-            nextMode = timerModeStore[0];
+            nextMode = timerModeState[0];
             newCycleCount = cycleCount + 1;
           } else if (mode === 'focus' && cycleCount === interval) {
-            nextMode = timerModeStore[2];
+            nextMode = timerModeState[2];
             newuActiveTask = updatePomos(state.activeTask);
           } else {
-            nextMode = timerModeStore[0];
+            nextMode = timerModeState[0];
             newCycleCount = 1;
           }
 

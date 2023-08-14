@@ -2,7 +2,6 @@
 'use client';
 
 import clsx from 'clsx';
-import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
@@ -20,6 +19,7 @@ import TaskListModal from '@/modules/task/components/TaskListModal';
 
 import TimerAction from './TimerAction';
 import TimerAnimation from './TimerAnimation';
+import TimerCountdown from './TimerCountdown';
 import TimerSettings from './TimerSettings';
 
 const modeToBackgroundColor: { [key: string]: string } = {
@@ -36,6 +36,7 @@ const Timer = () => {
     setPause,
     transitionToNextMode,
   } = useTimerStore();
+
   const { timerMode } = useTimerModeStore();
 
   const [isOpenTaskListModal, setOpenTaskListModal] = useState(false);
@@ -141,9 +142,7 @@ const Timer = () => {
           )}
 
           <TimerAnimation />
-          <div className='text-6xl font-bold text-neutral-900'>
-            {format(new Date(currentTimerMode.time * 60 * 1000), 'mm:ss')}
-          </div>
+          <TimerCountdown time={currentTimerMode?.time} />
         </div>
 
         <TimerAction onModeChange={transitionToNextMode} />
