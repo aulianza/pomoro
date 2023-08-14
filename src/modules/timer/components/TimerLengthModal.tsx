@@ -19,8 +19,9 @@ const TimerLengthModal = ({
             key={index}
             onClick={() => onTimeChange(timer)}
             className={clsx(
-              'py-3 px-5 bg-neutral-200 dark:bg-neutral-700 rounded-full',
-              selectedTime === timer && '!bg-neutral-100 dark:bg-neutral-500',
+              'py-3 px-5 border dark:border-neutral-700 bg-neutral-50 text-neutral-700 dark:text-neutral-200 dark:bg-neutral-700 rounded-full',
+              selectedTime === timer &&
+                '!bg-neutral-200 dark:bg-neutral-500 text-neutral-900 dark:text-neutral-800',
             )}
           >
             {timer} Minutes
