@@ -114,7 +114,7 @@ const Timer = () => {
     }
 
     themeColorMeta.content = themeColor;
-  }, [currentTimerMode]);
+  }, [activeTask, isRunning, currentTimerMode]);
 
   useEffect(() => {
     setMounted(true);
