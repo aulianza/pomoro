@@ -20,3 +20,13 @@ a {
 :focus {
   outline: none !important;
 }
+
+[data-rsbs-overlay] {
+  max-width: 480px !important;
+  margin: 0 auto !important;
+  z-index: 999 !important;
+}
+
+[data-rsbs-backdrop] {
+  z-index: 99 !important;
+}

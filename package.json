@@ -30,6 +30,7 @@
     "react-icons": "^4.10.1",
     "react-loading-skeleton": "^3.3.1",
     "react-modal-sheet": "^2.0.0",
+    "react-spring-bottom-sheet": "^3.4.1",
     "use-detect-keyboard-open": "^0.4.0",
     "uuid": "^9.0.0",
     "yup": "^1.2.0",

@@ -21,19 +21,19 @@ const TaskList = () => {
     setMounted(true);
   }, [tasks]);
 
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.keyCode === 65 || event.keyCode === 97) {
-        setOpen(true);
-      }
-    };
+  // useEffect(() => {
+  //   const handleKeyPress = (event: KeyboardEvent) => {
+  //     if (event.keyCode === 65 || event.keyCode === 97) {
+  //       setOpen(true);
+  //     }
+  //   };
 
-    document.addEventListener('keydown', handleKeyPress);
+  //   document.addEventListener('keydown', handleKeyPress);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyPress);
+  //   };
+  // }, []);
 
   const sortedTasks = useMemo(() => {
     return isMounted
