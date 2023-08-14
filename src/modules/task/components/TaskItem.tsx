@@ -105,7 +105,7 @@ const TaskItem = (props: TaskProps) => {
               className={clsx(
                 'cursor-pointer text-green-600 dark:text-green-400',
                 isCompleted &&
-                  'cursor-not-allowed text-neutral-300 dark:text-neutral-700',
+                  'cursor-not-allowed text-neutral-300 dark:text-neutral-500',
               )}
               size={22}
             />
