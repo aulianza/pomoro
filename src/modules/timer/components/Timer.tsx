@@ -11,6 +11,7 @@ import {
 } from 'react-icons/bi';
 import { BiSolidChevronLeft as BackIcon } from 'react-icons/bi';
 import { GiTomato as TomatoIcon } from 'react-icons/gi';
+import { LuSettings as SettingsIcon } from 'react-icons/lu';
 
 import BottomSheet from '@/common/components/BottomSheet';
 import { useTimerModeStore, useTimerStore } from '@/common/store/timer';
@@ -19,6 +20,7 @@ import TaskListModal from '@/modules/task/components/TaskListModal';
 
 import TimerAction from './TimerAction';
 import TimerAnimation from './TimerAnimation';
+import TimerSettings from './TimerSettings';
 
 const modeToBackgroundColor: { [key: string]: string } = {
   focus: 'bg-lime-100',
@@ -38,6 +40,7 @@ const Timer = () => {
 
   const [isOpenTaskListModal, setOpenTaskListModal] = useState(false);
   const [isOpenTaskCreateModal, setOpenTaskCreateModal] = useState(false);
+  const [isOpenTimerSettingsModal, setOpenTimerSettingsModal] = useState(false);
   const [isMounted, setMounted] = useState(false);
 
   const router = useRouter();
@@ -49,7 +52,6 @@ const Timer = () => {
     },
     {} as Record<string, number>,
   );
-  console.log('🚀 aulianza ~ Timer ~ modeTimes => ', modeTimes);
 
   const dynamicBgClass = modeToBackgroundColor[currentTimerMode.mode];
 
@@ -96,19 +98,27 @@ const Timer = () => {
   if (!isMounted) return null;
 
   return (
-    <div className={clsx(dynamicBgClass, 'h-screen  flex flex-col')}>
-      <div className='p-5'>
+    <div className={clsx(dynamicBgClass, 'h-screen flex flex-col')}>
+      <div className='flex items-center gap-3 justify-between p-5'>
         <div
           onClick={() => {
             setOpenTaskListModal(true);
           }}
-          className='flex items-center justify-between text-neutral-700 border-2 border-dashed border-neutral-500 px-4 py-2 rounded-full cursor-pointer'
+          className='flex flex-grow items-center justify-between text-neutral-700 border-2 border-dashed border-neutral-500 px-4 py-2 rounded-full cursor-pointer'
         >
           <div className='flex items-center gap-2'>
             <TaskIcon size={18} />
             {activeTask?.title || 'Select Task...'}
           </div>
           <SelectIcon size={22} />
+        </div>
+        <div
+          onClick={() => {
+            setOpenTimerSettingsModal(true);
+          }}
+          className='flex items-center border-2 border-dot border-neutral-500 p-2 rounded-full cursor-pointer text-neutral-700 dark:text-neutral-400 hover:border-neutral-600 hover:text-neutral-800'
+        >
+          <SettingsIcon size={24} />
         </div>
       </div>
 
@@ -156,6 +166,16 @@ const Timer = () => {
           onClose={() => setOpenTaskListModal(false)}
           onCreateNewTask={() => handleCreateNewTask()}
         />
+      </BottomSheet>
+
+      <BottomSheet
+        title='Timer Settings'
+        isOpen={isOpenTimerSettingsModal}
+        onClose={setOpenTimerSettingsModal}
+      >
+        <div className='p-6 space-y-6'>
+          <TimerSettings />
+        </div>
       </BottomSheet>
 
       <BottomSheet
