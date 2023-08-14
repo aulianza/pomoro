@@ -9,8 +9,8 @@ import { Providers } from '@/common/components/Providers';
 const sora = Sora({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Pomoro - SImple Pomodoro & Todo List App',
-  description: 'Made by aulianza',
+  title: 'Pomoro - Pomodoro & Todo List',
+  description: 'Pomoro by aulianza',
 };
 
 export default function RootLayout({
