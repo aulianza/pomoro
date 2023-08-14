@@ -93,6 +93,30 @@ const Timer = () => {
   }, []);
 
   useEffect(() => {
+    let themeColorMeta = document.querySelector(
+      'meta[name="theme-color"]',
+    ) as HTMLMetaElement;
+
+    if (!themeColorMeta) {
+      themeColorMeta = document.createElement('meta');
+      themeColorMeta.name = 'theme-color';
+      document.head.appendChild(themeColorMeta);
+    }
+
+    let themeColor = '#ebfccb';
+
+    if (currentTimerMode.mode === 'focus') {
+      themeColor = '#ebfccb';
+    } else if (currentTimerMode.mode === 'shortBreak') {
+      themeColor = '#e0f2fe';
+    } else if (currentTimerMode.mode === 'longBreak') {
+      themeColor = '#fae8ff';
+    }
+
+    themeColorMeta.content = themeColor;
+  }, [currentTimerMode]);
+
+  useEffect(() => {
     setMounted(true);
   }, [activeTask, currentTimerMode]);
 

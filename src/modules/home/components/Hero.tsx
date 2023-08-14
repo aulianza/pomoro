@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { BiLeaf as LogoIcon } from 'react-icons/bi';
 import { LuSettings as SettingsIcon } from 'react-icons/lu';
 
-import Quotes from './Quotes';
-
 const Hero = () => {
   return (
     <>
@@ -24,9 +22,6 @@ const Hero = () => {
           </div>
         </div>
       </header>
-      <div className='px-6 pt-3 pb-8 bg-white dark:bg-neutral-900'>
-        <Quotes />
-      </div>
     </>
   );
 };
