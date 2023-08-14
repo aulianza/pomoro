@@ -41,10 +41,10 @@ const BottomSheet = ({
       className='max-w-[480px] mx-auto'
     >
       <Sheet.Container
-        style={{
-          paddingBottom: keyboardHeight || '0',
-          transition: 'padding 200ms',
-        }}
+      // style={{
+      //   paddingBottom: keyboardHeight || '0',
+      //   transition: 'padding 200ms',
+      // }}
       >
         <Sheet.Header>
           <StyledSheetHeader className='dark:border-b dark:border-b-neutral-700 dark:bg-neutral-800'>
