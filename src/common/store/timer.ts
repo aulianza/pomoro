@@ -42,26 +42,20 @@ export const useTimerStore = create<InitialTimerStateProps>()(
 
       transitionToNextMode: () => {
         set((state) => {
-          let nextMode;
-          let newCycleCount = state.cycleCount;
-          let newuActiveTask = state.activeTask;
+          const { cycleCount, interval, activeTask } = state;
+          const { mode } = state.currentTimerMode;
 
-          if (
-            state.currentTimerMode.mode === 'focus' &&
-            state.cycleCount < state.interval
-          ) {
+          let nextMode;
+          let newCycleCount = cycleCount;
+          let newuActiveTask = activeTask;
+
+          if (mode === 'focus' && cycleCount < interval) {
             nextMode = timerMode[1];
             newuActiveTask = updatePomos(state.activeTask);
-          } else if (
-            state.currentTimerMode.mode === 'shortBreak' &&
-            state.cycleCount < state.interval
-          ) {
+          } else if (mode === 'shortBreak' && cycleCount < interval) {
             nextMode = timerMode[0];
-            newCycleCount = state.cycleCount + 1;
-          } else if (
-            state.currentTimerMode.mode === 'focus' &&
-            state.cycleCount === state.interval
-          ) {
+            newCycleCount = cycleCount + 1;
+          } else if (mode === 'focus' && cycleCount === interval) {
             nextMode = timerMode[2];
             newuActiveTask = updatePomos(state.activeTask);
           } else {
@@ -71,6 +65,7 @@ export const useTimerStore = create<InitialTimerStateProps>()(
 
           const newState = {
             ...state,
+            isPaused: false,
             activeTask: newuActiveTask,
             cycleCount: newCycleCount,
             currentTimerMode: nextMode,
