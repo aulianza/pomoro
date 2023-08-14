@@ -48,9 +48,11 @@ const TaskList = () => {
           <h2 className='font-medium text-lg text-neutral-700 dark:text-neutral-300'>
             Tasks
           </h2>
-          <span className='bg-teal-500 text-white px-2 py-0.5 rounded-full text-xs'>
-            {isMounted && sortedTasks.length}
-          </span>
+          {isMounted && (
+            <span className='bg-teal-500 text-white px-2 py-0.5 rounded-full text-xs'>
+              {sortedTasks.length}
+            </span>
+          )}
         </div>
         <button
           onClick={() => setOpen(true)}
