@@ -68,7 +68,12 @@ const TaskList = () => {
           : renderLoading()}
       </div>
 
-      <BottomSheet title='Add New Task' isOpen={isOpen} onClose={setOpen}>
+      <BottomSheet
+        key={isOpen ? 'bottom-sheet-open' : 'bottom-sheet-closed'}
+        title='Add New Task'
+        isOpen={isOpen}
+        onClose={setOpen}
+      >
         <AddEditTask action='add' onSave={() => setOpen(false)} />
       </BottomSheet>
     </div>

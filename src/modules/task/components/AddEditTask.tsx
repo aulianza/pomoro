@@ -84,6 +84,8 @@ const AddEditTask = ({
   });
 
   useEffect(() => {
+    formik.resetForm();
+
     const timeoutId = setTimeout(() => {
       if (titleInputRef.current) {
         titleInputRef.current.focus();

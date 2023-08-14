@@ -35,7 +35,7 @@ const TaskListModal = ({ onClose, onCreateNewTask }: TaskListModalProps) => {
 
   return (
     <>
-      <div className='p-6 flex flex-col gap-5 pb-24'>
+      <div className='p-6 flex flex-col gap-5 pb-32'>
         <div className='flex flex-col gap-2'>
           {isMounted
             ? sortedTasks?.map((task, index) => (

@@ -50,15 +50,9 @@ dependencies:
   react-loading-skeleton:
     specifier: ^3.3.1
     version: 3.3.1(react@18.2.0)
-  react-modal-sheet:
-    specifier: ^2.0.0
-    version: 2.0.0(framer-motion@10.15.1)(react@18.2.0)
   react-spring-bottom-sheet:
     specifier: ^3.4.1
     version: 3.4.1(@types/react@18.2.19)(react-dom@18.2.0)(react@18.2.0)
-  use-detect-keyboard-open:
-    specifier: ^0.4.0
-    version: 0.4.0
   uuid:
     specifier: ^9.0.0
     version: 9.0.0
@@ -1852,46 +1846,6 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /@react-aria/ssr@3.7.1(react@18.2.0):
-    resolution: {integrity: sha512-ovVPSD1WlRpZHt7GI9DqJrWG3OIYS+NXQ9y5HIewMJpSe+jPQmMQfyRmgX4EnvmxSlp0u04Wg/7oItcoSIb/RA==}
-    engines: {node: '>= 12'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@swc/helpers': 0.5.1
-      react: 18.2.0
-    dev: false
-
-  /@react-aria/utils@3.17.0(react@18.2.0):
-    resolution: {integrity: sha512-NEul0cQ6tQPdNSHYzNYD+EfFabeYNvDwEiHB82kK/Tsfhfm84SM+baben/at2N51K7iRrJPr5hC5fi4+P88lNg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-aria/ssr': 3.7.1(react@18.2.0)
-      '@react-stately/utils': 3.7.0(react@18.2.0)
-      '@react-types/shared': 3.19.0(react@18.2.0)
-      '@swc/helpers': 0.4.14
-      clsx: 1.2.1
-      react: 18.2.0
-    dev: false
-
-  /@react-stately/utils@3.7.0(react@18.2.0):
-    resolution: {integrity: sha512-VbApRiUV2rhozOfk0Qj9xt0qjVbQfLTgAzXLdrfeZSBnyIgo1bFRnjDpnDZKZUUCeGQcJJI03I9niaUtY+kwJQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@swc/helpers': 0.5.1
-      react: 18.2.0
-    dev: false
-
-  /@react-types/shared@3.19.0(react@18.2.0):
-    resolution: {integrity: sha512-h852l8bWhqUxbXIG8vH3ab7gE19nnP3U1kuWf6SNSMvgmqjiRN9jXKPIFxF/PbfdvnXXm0yZSgSMWfUCARF0Cg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@rollup/plugin-babel@5.3.1(@babel/core@7.22.10)(rollup@2.79.1):
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
@@ -1957,12 +1911,6 @@ packages:
       json5: 2.2.3
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.8
-    dev: false
-
-  /@swc/helpers@0.4.14:
-    resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
-    dependencies:
-      tslib: 2.6.1
     dev: false
 
   /@swc/helpers@0.5.1:
@@ -2858,11 +2806,6 @@ packages:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
     dev: true
-
-  /clsx@1.2.1:
-    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
-    engines: {node: '>=6'}
-    dev: false
 
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
@@ -5294,18 +5237,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-modal-sheet@2.0.0(framer-motion@10.15.1)(react@18.2.0):
-    resolution: {integrity: sha512-Ql5hXvZYuQ/hb3RBI7H23lxpgmzUdJYCUd1/ySXeAAVj8gSLC5t+ZQif12FghFV8Pw1IJIM1zxce7OnO65lLOw==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      framer-motion: '>=6'
-      react: '>=16'
-    dependencies:
-      '@react-aria/utils': 3.17.0(react@18.2.0)
-      framer-motion: 10.15.1(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
   /react-spring-bottom-sheet@3.4.1(@types/react@18.2.19)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-yDFqiPMm/fjefjnOe6Q9zxccbCl6HMUKsK5bWgfGHJIj4zmXVKio5d4icQvmOLuwpuCA2pwv4J6nGWS6fUZidQ==}
     peerDependencies:
@@ -6283,10 +6214,6 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.3.0
-
-  /use-detect-keyboard-open@0.4.0:
-    resolution: {integrity: sha512-g26dzEDF9qh1VSwYT7ILOdzS0v9xPo5IF3R804HksW+NAOiNd2P2KYrmTfd/5ApfYixlrX2P7+PlsEgAx/lZ6w==}
-    dev: false
 
   /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.19)(react@18.2.0):
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
