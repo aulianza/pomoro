@@ -13,18 +13,9 @@ import { TaskProps } from '@/common/types/task';
 
 import AddEditTask from './AddEditTask';
 
-const TaskItem = ({
-  id,
-  title,
-  note,
-  is_completed,
-  label,
-  pomos,
-  due_date,
-  start_time,
-  end_time,
-  created_at,
-}: TaskProps) => {
+const TaskItem = (props: TaskProps) => {
+  const { id, title, is_completed, created_at, note, pomos } = props;
+
   const { updateTask } = useTaskStore();
   const { activeTask, setActiveTask, setEnd } = useTimerStore();
 
@@ -39,16 +30,8 @@ const TaskItem = ({
     setCompleted(event.target.checked);
 
     const updatedTask: TaskProps = {
+      ...props,
       is_completed: event.target.checked,
-      id,
-      title,
-      note,
-      pomos,
-      label,
-      due_date,
-      start_time,
-      end_time,
-      created_at,
     };
 
     updateTask(updatedTask);
@@ -62,19 +45,13 @@ const TaskItem = ({
     event.stopPropagation();
 
     setActiveTask({
-      id,
-      title,
-      note,
-      label,
-      pomos,
-      due_date,
-      start_time,
-      end_time,
-      created_at,
+      ...props,
       is_completed: false,
     });
 
-    if (activeTask?.id !== id) setEnd();
+    if (activeTask?.id !== id) {
+      setEnd();
+    }
 
     router.push('/timer');
   };

@@ -116,7 +116,7 @@ const Timer = () => {
           onClick={() => {
             setOpenTimerSettingsModal(true);
           }}
-          className='flex items-center border-2 border-dot border-neutral-500 p-2 rounded-full cursor-pointer text-neutral-700 dark:text-neutral-400 hover:border-neutral-600 hover:text-neutral-800'
+          className='flex items-center border-2 border-dot border-neutral-500 p-2 rounded-full cursor-pointer text-neutral-700  hover:border-neutral-600 hover:text-neutral-800'
         >
           <SettingsIcon size={24} />
         </div>

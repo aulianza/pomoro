@@ -10,8 +10,7 @@ import TimerLengthModal from './TimerLengthModal';
 
 const TimerSettings = () => {
   const { timerMode, setTimerMode } = useTimerModeStore();
-  const { interval, currentTimerMode, setCurrentTimerMode, setEnd } =
-    useTimerStore();
+  const { interval, currentTimerMode, setCurrentTimerMode } = useTimerStore();
 
   const [isMounted, setMounted] = useState(false);
   const [isOpenTimerChangeModal, setOpenTimerChangeModal] = useState(false);
@@ -39,7 +38,6 @@ const TimerSettings = () => {
 
       if (currentTimerMode.mode === selectedMode?.mode) {
         setCurrentTimerMode(updatedMode);
-        setEnd();
       }
     }
 

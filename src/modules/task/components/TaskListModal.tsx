@@ -44,7 +44,7 @@ const TaskListModal = ({ onClose, onCreateNewTask }: TaskListModalProps) => {
             : renderLoading()}
         </div>
       </div>
-      <div className='p-6 fixed bottom-0 w-full max-w-[480px] mx-auto'>
+      <div className='p-6 fixed bottom-0 w-full max-w-[480px] mx-auto bg-white dark:bg-neutral-800'>
         <button
           type='submit'
           className='py-3 px-4 bg-sky-500 rounded-full w-full text-white'
