@@ -20,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
+      <head>
+        <link rel='icon' href='/images/favicon.png' sizes='<generated>' />
+      </head>
       <body
         className={clsx(
           'bg-neutral-50 dark:bg-neutral-800 md:bg-neutral-50 md:dark:bg-neutral-50',

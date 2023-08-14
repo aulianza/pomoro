@@ -1,29 +1,18 @@
 import Link from 'next/link';
+import { BiLeaf as LogoIcon } from 'react-icons/bi';
 import { LuSettings as SettingsIcon } from 'react-icons/lu';
-
-import { getFormattedDate, getTimeOfDay } from '@/common/helpers';
 
 import Quotes from './Quotes';
 
 const Hero = () => {
-  const timeOfDay = getTimeOfDay();
-  const currentDate = getFormattedDate();
-
-  const userName = 'Ryan';
-  const greetings = userName
-    ? `${timeOfDay}, ${userName}!`
-    : `Hi,  ${timeOfDay}!`;
-
   return (
     <>
       <header className='sticky top-0 z-50'>
         <div className='py-5 px-6 space-y-6 h-auto bg-white dark:bg-neutral-900'>
           <div className='flex justify-between items-center'>
-            <div className='flex flex-col'>
-              <span>{greetings}</span>
-              <span className='block text-sm font-normal text-neutral-500'>
-                {currentDate}
-              </span>
+            <div className='flex gap-2 items-center text-emerald-500 dark:text-emerald-400'>
+              <LogoIcon size={28} />
+              <h1 className='text-2xl'>Pomoro</h1>
             </div>
             <div className='flex items-center gap-3'>
               <Link href='/settings'>
