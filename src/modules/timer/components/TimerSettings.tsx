@@ -53,7 +53,7 @@ const TimerSettings = () => {
     <>
       <div className='space-y-2'>
         <span className='ml-3 text-sm text-neutral-500'>Timer Length</span>
-        <div className='p-1 bg-neutral-200 dark:bg-neutral-700 rounded-xl'>
+        <div className='p-1 bg-neutral-100 dark:bg-neutral-700 rounded-xl'>
           {timerMode?.map((item, index) => (
             <div key={index} className='flex items-center justify-between p-3'>
               <span>
@@ -61,7 +61,7 @@ const TimerSettings = () => {
               </span>
               <div
                 onClick={() => handleTimeChangeModal(item)}
-                className='text-right text-sm bg-neutral-100 dark:bg-neutral-600 rounded-lg py-1 px-3 cursor-pointer'
+                className='text-right text-sm bg-neutral-200 dark:bg-neutral-600 rounded-lg py-1 px-3 cursor-pointer'
               >
                 {item?.time} Minutes
               </div>
@@ -72,10 +72,10 @@ const TimerSettings = () => {
 
       <div className='space-y-2'>
         <span className='ml-3 text-sm text-neutral-500'>Focus Session</span>
-        <div className='p-1 bg-neutral-200 dark:bg-neutral-700 rounded-xl'>
+        <div className='p-1 bg-neutral-100 dark:bg-neutral-700 rounded-xl'>
           <div className='flex items-center justify-between p-3'>
             <span>Sessions Per Round</span>
-            <div className='text-right text-sm bg-neutral-100 dark:bg-neutral-600 rounded-lg py-1 px-3 cursor-pointer'>
+            <div className='text-right text-sm bg-neutral-200 dark:bg-neutral-600 rounded-lg py-1 px-3 cursor-pointer'>
               {interval} Sessions
             </div>
           </div>
