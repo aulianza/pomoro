@@ -109,6 +109,9 @@ const AddEditTask = ({
               type='text'
               placeholder='Input task title...'
               className='border bg-white dark:bg-neutral-700 dark:border-neutral-600 p-3 rounded-xl shadow-sm'
+              onTouchStart={() => {
+                formik.setFieldTouched('title', true, true);
+              }}
               {...formik.getFieldProps('title')}
             />
 
