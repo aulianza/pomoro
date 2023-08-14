@@ -1,8 +1,9 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import Hero from './Hero';
 import { useEffect } from 'react';
+
+import Hero from './Hero';
 
 const Home = () => {
   const { resolvedTheme } = useTheme();
