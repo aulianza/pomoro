@@ -13,7 +13,7 @@ import { BiSolidChevronLeft as BackIcon } from 'react-icons/bi';
 import { GiTomato as TomatoIcon } from 'react-icons/gi';
 
 import BottomSheet from '@/common/components/BottomSheet';
-import { useTimerStore } from '@/common/store/timer';
+import { useTimerModeStore, useTimerStore } from '@/common/store/timer';
 import AddEditTask from '@/modules/task/components/AddEditTask';
 import TaskListModal from '@/modules/task/components/TaskListModal';
 
@@ -34,12 +34,22 @@ const Timer = () => {
     setPause,
     transitionToNextMode,
   } = useTimerStore();
+  const { timerMode } = useTimerModeStore();
 
   const [isOpenTaskListModal, setOpenTaskListModal] = useState(false);
   const [isOpenTaskCreateModal, setOpenTaskCreateModal] = useState(false);
   const [isMounted, setMounted] = useState(false);
 
   const router = useRouter();
+
+  const modeTimes: Record<string, number> = timerMode?.reduce(
+    (item, modeObj) => {
+      item[modeObj.mode] = modeObj?.time;
+      return item;
+    },
+    {} as Record<string, number>,
+  );
+  console.log('🚀 aulianza ~ Timer ~ modeTimes => ', modeTimes);
 
   const dynamicBgClass = modeToBackgroundColor[currentTimerMode.mode];
 
@@ -53,12 +63,15 @@ const Timer = () => {
 
     if (isRunning && currentTimerMode.time > 0) {
       interval = setInterval(() => {
-        useTimerStore.setState((state) => ({
-          currentTimerMode: {
-            ...state.currentTimerMode,
-            time: state.currentTimerMode.time - 1,
-          },
-        }));
+        useTimerStore.setState((state) => {
+          const newTime = state.currentTimerMode.time - 1 / 60;
+          return {
+            currentTimerMode: {
+              ...state.currentTimerMode,
+              time: newTime,
+            },
+          };
+        });
       }, 1000);
     } else if (isRunning && currentTimerMode.time === 0) {
       transitionToNextMode();
@@ -68,13 +81,12 @@ const Timer = () => {
   }, [isRunning, currentTimerMode]);
 
   useEffect(() => {
-    if (currentTimerMode?.mode === 'focus' && currentTimerMode?.time !== 1500)
+    const currentMode = currentTimerMode?.mode;
+    const currentTime = currentTimerMode?.time;
+
+    if (currentMode && modeTimes[currentMode] !== currentTime) {
       setPause();
-    if (
-      currentTimerMode?.mode === 'shortBreak' &&
-      currentTimerMode?.time !== 300
-    )
-      setPause();
+    }
   }, []);
 
   useEffect(() => {
@@ -118,7 +130,7 @@ const Timer = () => {
 
           <TimerAnimation />
           <div className='text-6xl font-bold text-neutral-900'>
-            {format(new Date(currentTimerMode.time * 1000), 'mm:ss')}
+            {format(new Date(currentTimerMode.time * 60 * 1000), 'mm:ss')}
           </div>
         </div>
 

@@ -6,6 +6,11 @@ export type TimerModeProps = {
   time: number;
 };
 
+export type InitialTimerModeStateProps = {
+  timerMode: TimerModeProps[];
+  setTimerMode: (mode: TimerModeProps) => void;
+};
+
 export type InitialTimerStateProps = {
   activeTask?: TaskProps | null;
   currentTimerMode: TimerModeProps;
@@ -19,4 +24,5 @@ export type InitialTimerStateProps = {
   setPause: () => void;
   setEnd: () => void;
   transitionToNextMode: () => void;
+  setCurrentTimerMode: (updatedMode: TimerModeProps) => void;
 };

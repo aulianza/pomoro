@@ -44,9 +44,14 @@ const TaskList = () => {
   return (
     <div className='pt-6 px-6 pb-28 space-y-5'>
       <div className='flex justify-between items-center'>
-        <h2 className='font-medium text-lg text-neutral-700 dark:text-neutral-300'>
-          Today's Task
-        </h2>
+        <div className='flex gap-2 items-center'>
+          <h2 className='font-medium text-lg text-neutral-700 dark:text-neutral-300'>
+            Tasks
+          </h2>
+          <span className='bg-teal-500 text-white px-2 py-0.5 rounded-full text-xs'>
+            {isMounted && sortedTasks.length}
+          </span>
+        </div>
         <button
           onClick={() => setOpen(true)}
           className='py-2 px-3 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center gap-1 hover:shadow-sm'

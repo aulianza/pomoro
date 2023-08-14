@@ -35,7 +35,7 @@ const TaskListModal = ({ onClose, onCreateNewTask }: TaskListModalProps) => {
 
   return (
     <>
-      <div className='p-6 flex flex-col gap-5'>
+      <div className='p-6 flex flex-col gap-5 pb-24'>
         <div className='flex flex-col gap-2'>
           {isMounted
             ? sortedTasks?.map((task, index) => (
@@ -43,15 +43,15 @@ const TaskListModal = ({ onClose, onCreateNewTask }: TaskListModalProps) => {
               ))
             : renderLoading()}
         </div>
-        <div>
-          <button
-            type='submit'
-            className='py-3 px-4 bg-sky-500 rounded-full w-full text-white'
-            onClick={onCreateNewTask}
-          >
-            Create New Task
-          </button>
-        </div>
+      </div>
+      <div className='p-6 fixed bottom-0 w-full max-w-[480px] mx-auto'>
+        <button
+          type='submit'
+          className='py-3 px-4 bg-sky-500 rounded-full w-full text-white'
+          onClick={onCreateNewTask}
+        >
+          Create New Task
+        </button>
       </div>
     </>
   );

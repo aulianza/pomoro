@@ -100,7 +100,7 @@ const TaskItem = ({
   return (
     <>
       <div
-        className='border p-5 rounded-xl shadow-sm bg-white dark:bg-neutral-900 dark:border-neutral-700 cursor-pointer'
+        className='border p-5 rounded-xl shadow-sm bg-white dark:bg-neutral-700 dark:border-neutral-700 cursor-pointer'
         onClick={() => {
           setOpen(true);
         }}

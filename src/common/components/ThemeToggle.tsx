@@ -1,17 +1,19 @@
 'use client';
 
-import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useCallback, useEffect, useState } from 'react';
-import { BiMoon, BiSun } from 'react-icons/bi';
+
+import Toggle from './Toggle';
 
 const ThemeToggle = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [themeColor, setThemeColor] = useState<string | undefined>(undefined);
+  const [isChecked, setChecked] = useState(resolvedTheme === 'dark');
 
   const handleChangeTheme = useCallback(() => {
     setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
-  }, [resolvedTheme, setTheme]);
+    setChecked(!isChecked);
+  }, [resolvedTheme, setTheme, isChecked]);
 
   useEffect(() => {
     setThemeColor(resolvedTheme);
@@ -19,19 +21,7 @@ const ThemeToggle = () => {
 
   if (!themeColor) return null;
 
-  return (
-    <button
-      className={clsx(
-        '!p-2 border border-neutral-400',
-        'text-neutral-600 dark:text-neutral-400',
-        'rounded-full transition hover:rotate-45',
-        'transition-all duration-300',
-      )}
-      onClick={handleChangeTheme}
-    >
-      {themeColor === 'light' ? <BiMoon size={22} /> : <BiSun size={22} />}
-    </button>
-  );
+  return <Toggle isChecked={isChecked} onChecked={handleChangeTheme} />;
 };
 
 export default ThemeToggle;
