@@ -108,7 +108,9 @@ const Timer = () => {
         >
           <div className='flex items-center gap-2'>
             <TaskIcon size={18} />
-            {activeTask?.title || 'Select Task...'}
+            <div className='truncate w-48 md:w-72'>
+              {activeTask?.title || 'Select Task...'}
+            </div>
           </div>
           <SelectIcon size={22} />
         </div>
