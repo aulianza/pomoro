@@ -1,4 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-module.exports = nextConfig;
+const withPWA = require('next-pwa')({
+  dest: 'public',
+});
+
+module.exports = withPWA({});

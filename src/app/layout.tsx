@@ -22,6 +22,7 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <head>
         <link rel='icon' href='/images/favicon.png' sizes='<generated>' />
+        <link rel='manifest' href='/manifest.json' />
       </head>
       <body
         className={clsx(
