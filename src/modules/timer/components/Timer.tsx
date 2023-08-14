@@ -145,16 +145,16 @@ const Timer = () => {
         </div>
 
         <TimerAction onModeChange={transitionToNextMode} />
-      </div>
 
-      <div
-        className='p-10 flex items-center justify-center cursor-pointer gap-3 hover:gap-4 transition-all duration-300'
-        onClick={() => router.back()}
-      >
-        <div className='border border-neutral-400 p-2 rounded-full cursor-pointer text-neutral-700'>
-          <BackIcon size={20} />
+        <div
+          className='p-12 flex items-center justify-center cursor-pointer gap-3 hover:gap-4 transition-all duration-300'
+          onClick={() => router.back()}
+        >
+          <div className='border border-neutral-400 p-2 rounded-full cursor-pointer text-neutral-700'>
+            <BackIcon size={20} />
+          </div>
+          <div className='text-neutral-700'>Back</div>
         </div>
-        <div className='text-neutral-700'>Back</div>
       </div>
 
       <BottomSheet
