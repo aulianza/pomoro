@@ -1,9 +1,10 @@
 'use client';
 
 import styled from '@emotion/styled';
-import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react';
+import { MouseEvent, ReactNode, useRef } from 'react';
 import { IoMdClose as CloseIcon } from 'react-icons/io';
 import Sheet, { SheetRef } from 'react-modal-sheet';
+import useDetectKeyboardOpen from 'use-detect-keyboard-open';
 
 type BottomSheetProps = {
   title?: string;
@@ -19,26 +20,11 @@ const BottomSheet = ({
   onClose,
 }: BottomSheetProps) => {
   const ref = useRef<SheetRef>(null);
-  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+  const isKeyboardOpen = useDetectKeyboardOpen();
 
   const isIOSDevice =
     typeof navigator !== 'undefined' &&
     /(iPhone|iPad)/i.test(navigator.userAgent);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const keyboardOpen =
-        window.innerHeight < (window.visualViewport?.height || 0);
-      setIsKeyboardOpen(keyboardOpen);
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const keyboardHeight =
     isIOSDevice && isKeyboardOpen
